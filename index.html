@@ -3,20 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gravel Sniper ≤ 1800 €</title>
+  <title>Deal Sniper · Gravel & Fast Finds</title>
   <style>
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, monospace;
-      background: #000; color: #eaeaea; margin: 0; padding: 32px 18px;
-      max-width: 640px; margin-inline: auto;
+      background: #000; color: #eaeaea; margin: 0; padding: 24px 16px;
+      max-width: 680px; margin-inline: auto;
     }
     header {
       display: flex; justify-content: space-between; align-items: baseline;
-      border-bottom: 1px solid #1f1f1f; padding-bottom: 14px; margin-bottom: 22px;
+      border-bottom: 1px solid #1f1f1f; padding-bottom: 14px; margin-bottom: 18px;
     }
-    h1 { font-size: 1.05rem; font-weight: 600; margin: 0; color: #fff; letter-spacing: -0.02em; }
-    .sub { font-size: 0.78rem; color: #666; }
+    h1 { font-size: 1.1rem; font-weight: 700; margin: 0; color: #fff; letter-spacing: -0.02em; }
+    .sub { font-size: 0.78rem; color: #777; }
+    
+    /* Segmented Navigation Tabs */
+    .tabs {
+      display: flex; gap: 8px; margin-bottom: 20px; background: #0a0a0a;
+      padding: 4px; border-radius: 8px; border: 1px solid #1f1f1f;
+    }
+    .tab-btn {
+      flex: 1; text-align: center; padding: 10px 12px; border-radius: 6px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; border: 1px solid transparent;
+      background: transparent; color: #888; display: flex; justify-content: center; align-items: center; gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover { color: #ccc; }
+    .tab-btn.active {
+      background: #171717; color: #fff; border-color: #2e2e2e; box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    .tab-btn .badge {
+      font-size: 0.72rem; padding: 2px 7px; border-radius: 12px; background: #222; color: #aaa;
+    }
+    .tab-btn.active .badge {
+      background: #38bdf8; color: #000; font-weight: 700;
+    }
+    .tab-btn.active.tab-fast-btn .badge {
+      background: #fbbf24; color: #000;
+    }
+
+    .section-banner {
+      background: #0d1520; border: 1px solid #1e293b; border-radius: 8px;
+      padding: 12px 14px; margin-bottom: 16px; font-size: 0.82rem; color: #94a3b8; line-height: 1.45;
+    }
+    .section-banner strong { color: #e2e8f0; }
+    
     .card {
       background: #0a0a0a; border: 1px solid #1f1f1f; border-radius: 8px;
       padding: 16px; margin-bottom: 12px; transition: border-color 0.15s;
@@ -27,11 +59,15 @@
       display: inline-block; background: #112a1a; color: #4ade80; border: 1px solid #1e4d2b;
       font-size: 0.75rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-right: 8px;
     }
+    .score.score-fast {
+      background: #2b1f09; color: #fbbf24; border-color: #5c430e;
+    }
     .model { font-size: 0.95rem; font-weight: 600; color: #fff; }
     .prices { font-size: 0.88rem; white-space: nowrap; }
     .ask { color: #777; text-decoration: line-through; }
     .arrow { color: #444; margin: 0 4px; }
     .bid { color: #4ade80; font-weight: 700; font-size: 0.95rem; }
+    
     .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
     .tag {
       font-size: 0.74rem; color: #999; background: #121212; border: 1px solid #222;
@@ -39,24 +75,41 @@
     }
     .tag.sleeper { color: #facc15; border-color: #713f12; background: #1c1405; margin-left: 8px; }
     .tag.local { color: #38bdf8; border-color: #164e63; background: #08202b; }
+    .tag.tag-accent { color: #fbbf24; border-color: #78350f; background: #1f1604; }
+    .tag.tag-shipping { color: #a78bfa; border-color: #4c1d95; background: #1e1338; }
+    
     .verdict { font-size: 0.83rem; color: #bbb; margin-bottom: 14px; line-height: 1.4; }
-    .actions { display: flex; gap: 8px; }
-    .btn-open, .btn-copy {
-      flex: 1; text-align: center; padding: 8px 12px; border-radius: 5px;
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn-open, .btn-copy, .btn-secondary {
+      flex: 1; text-align: center; padding: 8px 12px; border-radius: 5px; min-width: 130px;
       font-size: 0.8rem; font-weight: 600; text-decoration: none; cursor: pointer; border: 1px solid transparent;
+      display: inline-block;
     }
     .btn-open { background: #fff; color: #000; }
     .btn-copy { background: #111; color: #ccc; border-color: #262626; }
     .btn-copy:hover { border-color: #444; color: #fff; }
+    .btn-secondary { background: #172554; color: #93c5fd; border-color: #1e3a8a; }
     .empty { color: #666; font-size: 0.85rem; text-align: center; padding: 40px 0; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Gravel Sniper · ≤ 1800 €</h1>
-    <span class="sub">31 verifizierte Deals · 21.10. 13:44</span>
+    <h1>Deal Sniper</h1>
+    <span class="sub">Stand: 21.10. 13:58</span>
   </header>
-  
+
+  <nav class="tabs">
+    <button id="btn-gravel" class="tab-btn active" onclick="switchTab('gravel')">
+      🚲 Gravel Sniper <span class="badge">31</span>
+    </button>
+    <button id="btn-fast" class="tab-btn tab-fast-btn" onclick="switchTab('fast')">
+      ⚡ Fast Finds <span class="badge">5</span>
+    </button>
+  </nav>
+
+  <!-- TAB 1: GRAVEL SNIPER -->
+  <div id="tab-gravel" class="tab-content">
+    
         <div class="card">
           <div class="row-top">
             <div>
@@ -801,13 +854,167 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße (bzw. Rahmenhöhe in cm laut Aufkleber am Sitzrohr) hat das Diverge? Falls es Größe 49 oder 52 ist, würde ich 1.150 € bei zeitnaher Abholung anbieten.')">Gebot-Text kopieren</button>
           </div>
         </div>
+  </div>
+
+  <!-- TAB 2: FAST FINDS (REGENSCHIRME & SLEEPER) -->
+  <div id="tab-fast" class="tab-content" style="display: none;">
+    <div class="section-banner">
+      <strong>☂️ Aktuelle Mission: High-End Regenschirme & Konvolute</strong><br>
+      Fokus auf Sammlungsauflösungen (Knirps, Doppler), unzerstörbare Stahl-/Fiberglas-Konstruktionen und Nutzung der aktuellen <strong>Kleinanzeigen Gratis-Versand-Aktion</strong> via Direktkauf.
+    </div>
+    
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score score-fast">9.5</span>
+              <span class="model">Knirps Topmatic SL (Echtholzgriff)</span>
+              <span class="tag tag-accent">Sammlungsauflösung (Privat)</span>
+            </div>
+            <div class="prices">
+              <span class="ask">59 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">45 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="tag local">📍 89537 Giengen</span>
+            <span class="tag">8 Stahlstreben · sturmfest · Echtholz-Griff</span>
+            <span class="tag tag-shipping">📦 Direktkauf aktiv (Gratis-Versand)</span>
+            <span class="tag">Marktwert ~95 €</span>
+          </div>
+          <div class="verdict">Topmatic SL Unikat: Unbenutzt mit Etikett, massiver Federstahl, 50% unter UVP.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/knirps-topmatic-sl-herren-taschenschirm-regenschirm-holzgriff-neu/3543406032-156-8958" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe gesehen, dass du eine Knirps-Sammlung auflöst. Würdest du mir den Topmatic SL und den Long Automatic als Paket für 65 € inkl. Direktkauf/Versand anbieten? Viele Grüße!')">Gebot-Text kopieren</button>
+            <a class="btn-secondary" href="https://www.kleinanzeigen.de/s-bestandsliste.html?userId=29712927" target="_blank" rel="noopener">Sammlung ansehen 👤</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score score-fast">9.3</span>
+              <span class="model">4x Doppler Schirme im Set (1x Automatik, 3x Manuell)</span>
+              <span class="tag tag-accent">4er-Paket / Konvolut</span>
+            </div>
+            <div class="prices">
+              <span class="ask">60 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">50 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="tag local">📍 37603 Holzminden</span>
+            <span class="tag">Österreichische Markenqualität · 15 € / Schirm</span>
+            <span class="tag tag-shipping">📦 Direktkauf aktiv (Gratis-Versand)</span>
+            <span class="tag">Marktwert ~110 €</span>
+          </div>
+          <div class="verdict">Konvolut-Schnäppchen: 4 unbenutzte Doppler-Schirme für effektiv 12,50–15 € pro Stück.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/4-regenschirme-doppler-kein-knirps-unbenutzt/3534525429-155-2831" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich würde das 4er-Set Doppler-Schirme gerne über Direktkauf für 50 € übernehmen. Wäre das für Sie in Ordnung? Viele Grüße!')">Gebot-Text kopieren</button>
+            
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score score-fast">9.2</span>
+              <span class="model">Knirps Long Automatic (Stockschirm)</span>
+              <span class="tag tag-accent">Sammlungsauflösung (Privat)</span>
+            </div>
+            <div class="prices">
+              <span class="ask">20 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">18 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="tag local">📍 89537 Giengen</span>
+            <span class="tag">Robuster Stockschirm · Automatiköffnung</span>
+            <span class="tag tag-shipping">📦 Direktkauf aktiv (Gratis-Versand)</span>
+            <span class="tag">Marktwert ~55 €</span>
+          </div>
+          <div class="verdict">Eleganter Marken-Stockschirm mit Automatik für schlappe 20 € (Neupreis ca. 55 €).</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/knirps-long-automatic-regenschirm/3542745037-156-8958" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich würde den Knirps Long Automatic gerne direkt kaufen. Versendest du auch kombiniert mit einem deiner Taschenschirme? Viele Grüße!')">Gebot-Text kopieren</button>
+            <a class="btn-secondary" href="https://www.kleinanzeigen.de/s-bestandsliste.html?userId=29712927" target="_blank" rel="noopener">Sammlung ansehen 👤</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score score-fast">9.0</span>
+              <span class="model">Knirps Duomatic (Auf-Zu-Automatik)</span>
+              <span class="tag tag-accent">Sammlungsauflösung (Privat)</span>
+            </div>
+            <div class="prices">
+              <span class="ask">25 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">22 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="tag local">📍 89537 Giengen</span>
+            <span class="tag">Duomatic Knopfdruck Auf/Zu · Neu mit Etikett</span>
+            <span class="tag tag-shipping">📦 Direktkauf aktiv (Gratis-Versand)</span>
+            <span class="tag">Marktwert ~50 €</span>
+          </div>
+          <div class="verdict">Der Klassiker: Echter Knirps mit Auf- und Zu-Automatik für die Hälfte des Ladenpreises.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/knirps-duomatic-taschenschirm-regenschirm-mit-muster-neu/3544405762-156-8958" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich hätte Interesse an dem Knirps Duomatic. Ist ein Kombiversand mit dem Topmatic SL machbar? Viele Grüße!')">Gebot-Text kopieren</button>
+            <a class="btn-secondary" href="https://www.kleinanzeigen.de/s-bestandsliste.html?userId=29712927" target="_blank" rel="noopener">Sammlung ansehen 👤</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score score-fast">8.7</span>
+              <span class="model">2x Knirps Vintage (Omas Schirm / Kult)</span>
+              <span class="tag tag-accent">2er-Set Vintage</span>
+            </div>
+            <div class="prices">
+              <span class="ask">29 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">24 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="tag local">📍 74653 Künzelsau</span>
+            <span class="tag">Unzerstörbares Metallgestell alter Schule</span>
+            <span class="tag tag-shipping">📦 Versand mit Kombi-Rabatt möglich</span>
+            <span class="tag">Marktwert ~60 €</span>
+          </div>
+          <div class="verdict">Echte Vintage-Knirps Schirme mit massivem Metallgestell, die moderne Alu-Schirme überleben.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/2-x-omas-schirm-knirps-regenschirm-vintage-style-kult-rar-/3545047872-234-9259" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, sind die beiden Vintage-Knirps Schirme noch voll funktionstüchtig und rasten sauber ein? Würde sie für 24 € inklusive Versand nehmen. Viele Grüße!')">Gebot-Text kopieren</button>
+            
+          </div>
+        </div>
+  </div>
+
   <script>
+    function switchTab(name) {
+      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + name).style.display = 'block';
+      document.getElementById('btn-' + name).classList.add('active');
+      window.location.hash = name;
+    }
+
     function copyMsg(btn, txt) {
       navigator.clipboard.writeText(txt);
       const old = btn.textContent;
       btn.textContent = "✓ Kopiert";
       btn.style.color = "#4ade80";
       setTimeout(() => { btn.textContent = old; btn.style.color = ""; }, 1800);
+    }
+
+    // Auto-Select via URL Hash (z. B. #fast)
+    if (window.location.hash === '#fast') {
+      switchTab('fast');
     }
   </script>
 </body>
