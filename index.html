@@ -110,12 +110,12 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 23.10. 15:29</span>
+    <span class="sub">Stand: 23.10. 17:26</span>
   </header>
 
   <nav class="tabs">
     <button id="btn-gravel" class="tab-btn active" onclick="switchTab('gravel')">
-      🚲 Gravel Sniper <span class="badge">71</span>
+      🚲 Gravel Sniper <span class="badge">73</span>
     </button>
     <button id="btn-fast" class="tab-btn tab-fast-btn" onclick="switchTab('fast')">
       ⚡ Fast Finds <span class="badge">4</span>
@@ -125,13 +125,37 @@
   <!-- TAB 1: GRAVEL SNIPER -->
   <div id="tab-gravel" class="tab-content">
     <div class="filter-pills">
-      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (71)</button>
+      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (73)</button>
       <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Buycycle (5)</button>
-      <button class="pill pill-bikemarkt" onclick="filterPlatform(event, 'bikemarkt')">🚲 Bikemarkt (1)</button>
+      <button class="pill pill-bikemarkt" onclick="filterPlatform(event, 'bikemarkt')">🚲 Bikemarkt (2)</button>
       <button class="pill pill-outlet" onclick="filterPlatform(event, 'outlet')">🏪 Outlets / Neu (4)</button>
-      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (61)</button>
+      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (62)</button>
     </div>
     
+        <div class="card" data-platform="bikemarkt">
+          <div class="row-top">
+            <div>
+              <span class="score">9.8</span>
+              <span class="model">Cube Nuroad C:62 SLT (2024)</span><span class='tag sleeper'>Sleeper</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">1150 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-bikemarkt'>🚲 Bikemarkt (MTB-News)</span>
+            <span class="tag">S</span>
+            <span class="tag">SRAM Force/Eagle AXS 12-fach</span>
+            <span class="tag">Marktwert ~1800 €</span>
+          </div>
+          <div class="verdict">Extremer High-End-Sleeper: 2024er SLT mit AXS und Carbon-Laufrädern zum Spottpreis.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://bikemarkt.mtb-news.de/article/1802032-cube-nuroad" target="_blank" rel="noopener">Im Bikemarkt öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe großes Interesse an dem Nuroad in Größe S und könnte es zeitnah in Bretten abholen. Handelt es sich um den originalen C:62 Carbonrahmen? Wären 1.150 € bei schneller Abholung für Sie in Ordnung? Viele Grüße')">Gebot-Text kopieren</button>
+          </div>
+        </div>
         <div class="card" data-platform="outlet">
           <div class="row-top">
             <div>
@@ -1378,6 +1402,30 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bergamont-grandurance-rd-3-2024-sehr-gepflegt-unter-1-000-km/3547772708-217-1738" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Rad! Funktioniert die Lichtanlage einwandfrei und sind die Belege der letzten Inspektion vorhanden? Für 650 € würde ich es zeitnah abholen kommen.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="kleinanzeigen">
+          <div class="row-top">
+            <div>
+              <span class="score">7.8</span>
+              <span class="model">Cube Nuroad Pro (2023/24)</span>
+            </div>
+            <div class="prices">
+              <span class="ask">900 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">680 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 76829 Landau in der Pfalz</span>
+            <span class="tag">XS / 50 cm</span>
+            <span class="tag">Shimano Tiagra / GRX 400 (mech. TRP Spyre Disc)</span>
+            <span class="tag">Marktwert ~720 €</span>
+          </div>
+          <div class="verdict">Perfekte Größe XS, quasi neuwertig, aber mechanische Scheibenbremsen drücken den Wert.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-gravelbike-50cm-grey-modell-680100/3549586956-217-5219" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist die Erstkauf-Rechnung von Januar 2024 vorhanden? Da das Pro mechanische Scheibenbremsen hat, biete ich 680 € und könnte das Rad kurzfristig gegen Barzahlung abholen. Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen">
