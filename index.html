@@ -77,6 +77,7 @@
     .tag.local { color: #38bdf8; border-color: #164e63; background: #08202b; }
     .tag.tag-accent { color: #fbbf24; border-color: #78350f; background: #1f1604; }
     .tag.tag-shipping { color: #a78bfa; border-color: #4c1d95; background: #1e1338; }
+    .tag.tag-buycycle { color: #c084fc; border-color: #581c87; background: #2e1065; }
     
     .verdict { font-size: 0.83rem; color: #bbb; margin-bottom: 14px; line-height: 1.4; }
     .actions { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -95,12 +96,12 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 23.10. 13:55</span>
+    <span class="sub">Stand: 23.10. 14:43</span>
   </header>
 
   <nav class="tabs">
     <button id="btn-gravel" class="tab-btn active" onclick="switchTab('gravel')">
-      🚲 Gravel Sniper <span class="badge">49</span>
+      🚲 Gravel Sniper <span class="badge">60</span>
     </button>
     <button id="btn-fast" class="tab-btn tab-fast-btn" onclick="switchTab('fast')">
       ⚡ Fast Finds <span class="badge">4</span>
@@ -171,7 +172,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>50259 Pulheim</span>
+            <span class='tag tag-shipping'>📦 50259 Pulheim</span>
             <span class="tag">S</span>
             <span class="tag">Shimano Ultegra Disc</span>
             <span class="tag">Marktwert ~850 €</span>
@@ -285,13 +286,61 @@
               <span class="model">Cube Nuroad C:62 Pro</span>
             </div>
             <div class="prices">
+              <span class="ask">1250 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">1050 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 44797 Bochum-Süd</span>
+            <span class="tag">XS / 50 cm</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1150 €</span>
+          </div>
+          <div class="verdict">Perfekte XS-Geometrie, leichter Carbon-Allrounder mit hydraulischer GRX für jedes Pendelwetter.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-2023-gravelbike-carbon-xs-shimano-grx/3549489591-217-1950" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Nuroad! Sind Kette und Kassette nach den 2.500 km noch im ersten Satz? Bei passendem Zustand biete ich 1.050 € und könnte das Rad zeitnah abholen.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.7</span>
+              <span class="model">Cube Nuroad WS C:62 Pro</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1180 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 41836 Hückelhoven</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1250 €</span>
+          </div>
+          <div class="verdict">Perfekter Carbon-Pendler in Größe S mit Schutzblechen, Träger und Gewährleistung.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168/3549118635-217-1207" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich interessiere mich für das Cube Nuroad WS C:62 in Größe S. Ist am Preis noch etwas Spielraum, wenn ich direkt für 1.180 € inkl. Versand bestelle?')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.7</span>
+              <span class="model">Cube Nuroad C:62 Pro</span>
+            </div>
+            <div class="prices">
               <span class="ask">1450 € VB</span>
               <span class="arrow">→</span>
               <span class="bid">1200 €</span>
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>35580 Wetzlar</span>
+            <span class='tag tag-shipping'>📦 35580 Wetzlar</span>
             <span class="tag">S (50 cm)</span>
             <span class="tag">Shimano GRX 1x11 (Hydr.)</span>
             <span class="tag">Marktwert ~1300 €</span>
@@ -300,6 +349,126 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-gravel-bike-2022/3539939603-217-4847" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe großes Interesse an dem Nuroad. Größe S passt bei meinen 168 cm ideal und die Schutzbleche sind perfekt für meinen Arbeitsweg. Wäre eine Abholung in Wetzlar für 1.200 € zeitnah für Sie denkbar? Viele Grüße')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.7</span>
+              <span class="model">Cube Nuroad WS C:62 Pro</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1200 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 48157 Coerde</span>
+            <span class="tag">S (ca. 50-52 cm)</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1350 €</span>
+          </div>
+          <div class="verdict">Perfekter Carbon-Pendler mit Schutzblechen, Träger, GRX und passender Größe S.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549127563-217-16773" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ist das Nuroad WS C:62 Pro in Größe S noch verfügbar? Wäre ein Gesamtpreis von 1.200 € inklusive deutschlandweitem Speditionsversand für Sie vorstellbar?')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.7</span>
+              <span class="model">Cube Nuroad WS C:62 Pro</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1200 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 40880 Ratingen</span>
+            <span class="tag">S (perfekt für 168 cm)</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1350 €</span>
+          </div>
+          <div class="verdict">Top Pendler-Paket: Carbon, GRX, Händlergarantie, passende Größe S und bereits voll ausgestattet.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549121633-217-1778" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Nuroad C:62 WS in Größe S. Ist am Preis noch etwas Spielraum, wenn ich es direkt nehme – z.B. 1.200 € bzw. inkl. Versand? Viele Grüße')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.7</span>
+              <span class="model">Cube Nuroad WS C:62 Pro</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1200 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 50677 Köln Altstadt</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1250 €</span>
+          </div>
+          <div class="verdict">Perfekter Pendler-Traum: Carbon, Schutzbleche, Gepäckträger, Größe S und Händlergarantie.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549123074-217-990" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe Interesse an dem Nuroad WS C:62. Wäre beim Preis inklusive deutschlandweitem Versand noch etwas Spielraum auf 1.200 € glatt?')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.7</span>
+              <span class="model">Cube Nuroad WS C:62 Pro</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1200 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 53123 Hardtberg</span>
+            <span class="tag">S (ca. 50 cm)</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1250 €</span>
+          </div>
+          <div class="verdict">Perfektes Pendler-Paket: Carbon, Größe S, Schutzbleche montiert und 1 Jahr Händlergarantie.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549120451-217-1050" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich habe ernstes Interesse an dem Nuroad WS C:62 in Größe S. Wäre ein Abschluss für glatte 1.250 € inklusive Versand möglich? Beste Grüße')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.7</span>
+              <span class="model">Canyon Grizl 7</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1500 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">1250 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 04318 Sellerhausen-Stünz</span>
+            <span class="tag">XS</span>
+            <span class="tag">Shimano GRX RX820 2x12 Hydr.</span>
+            <span class="tag">Marktwert ~1300 €</span>
+          </div>
+          <div class="verdict">Perfekte Größe, moderne 12-fach GRX und massive Reifenfreiheit fürs Ganzjahres-Pendeln.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-7-raw-rahmengroesse-xs/3545883574-217-4245" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist die Canyon-Originalrechnung aus 2024 zwecks Restgarantie vorhanden? Ich habe echtes Kaufinteresse und biete 1.250 € bei zeitnaher Abholung.')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card">
@@ -363,7 +532,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>55218 Ingelheim am Rhein</span>
+            <span class='tag tag-shipping'>📦 55218 Ingelheim am Rhein</span>
             <span class="tag">S</span>
             <span class="tag">Shimano 105 Di2 (Hydr.)</span>
             <span class="tag">Marktwert ~1900 €</span>
@@ -411,7 +580,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>93413 Cham</span>
+            <span class='tag tag-shipping'>📦 93413 Cham</span>
             <span class="tag">XS / 48 cm</span>
             <span class="tag">Shimano Ultegra 2x11 Hydr.</span>
             <span class="tag">Marktwert ~850 €</span>
@@ -435,7 +604,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>55129 Mainz</span>
+            <span class='tag tag-shipping'>📦 55129 Mainz</span>
             <span class="tag">S</span>
             <span class="tag">SRAM 1x11 Hydro (Apex 1 / Rival)</span>
             <span class="tag">Marktwert ~850 €</span>
@@ -444,6 +613,30 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cyclocross-gravel-canyon-inflite-al-slx-s-fahrrad/3525645202-217-5324" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Inflite! Welche SRAM-Gruppe ist genau montiert (Apex oder Rival)? Wenn alles passt, biete ich 800 € Barzahlung bei schneller Abholung in Mainz.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.4</span>
+              <span class="model">Cube Nuroad WS C:62 Pro</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1150 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag local'>📍 45657 Recklinghausen</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1250 €</span>
+          </div>
+          <div class="verdict">Perfektes Pendler-Setup in passender Größe S: Carbon, Schutzbleche, Gepäckträger und Händlergarantie.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549124299-217-1987" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Wäre ein Kauf für 1.150 € inklusive deutschlandweitem Versand für Sie vorstellbar? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card">
@@ -483,7 +676,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>97074 Würzburg</span>
+            <span class='tag tag-shipping'>📦 97074 Würzburg</span>
             <span class="tag">XS</span>
             <span class="tag">Microshift Sword 1x10</span>
             <span class="tag">Marktwert ~650 €</span>
@@ -507,7 +700,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>69488 Birkenau</span>
+            <span class='tag tag-shipping'>📦 69488 Birkenau</span>
             <span class="tag">S / 51 cm</span>
             <span class="tag">Shimano GRX 1x11 hydr.</span>
             <span class="tag">Marktwert ~1050 €</span>
@@ -531,7 +724,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>35315 Homberg</span>
+            <span class='tag tag-shipping'>📦 35315 Homberg</span>
             <span class="tag">Unbekannt</span>
             <span class="tag">Shimano GRX RX810 Hydr.</span>
             <span class="tag">Marktwert ~1400 €</span>
@@ -555,7 +748,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>69517 Gorxheimertal</span>
+            <span class='tag tag-shipping'>📦 69517 Gorxheimertal</span>
             <span class="tag">S</span>
             <span class="tag">Shimano GRX RX-820/610 2x12 Hydr.</span>
             <span class="tag">Marktwert ~1750 €</span>
@@ -627,7 +820,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>55546 Pfaffen-Schwabenheim</span>
+            <span class='tag tag-shipping'>📦 55546 Pfaffen-Schwabenheim</span>
             <span class="tag">S (51-52 cm)</span>
             <span class="tag">Shimano / TRP Spyre Mech. Disc</span>
             <span class="tag">Marktwert ~500 €</span>
@@ -660,6 +853,30 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/rennrad-cube-nuroad-rh47-cyclocross-gravelbike/3540956038-217-9590" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, steht das Nuroad noch zum Verkauf? Sind Verschleißteile (Kette, Bremsbeläge) noch gut in Schuss? Für 550 € würde ich es zeitnah abholen kommen.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">8.0</span>
+              <span class="model">Cube Nuroad WS C:62 Pro</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1150 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 52349 Düren</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1200 €</span>
+          </div>
+          <div class="verdict">Carbon-Gravel mit Schutzblechen und GRX in Größe S: Perfekter Pendler!</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549111504-217-1767" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ist das Cube Nuroad WS C:62 noch verfügbar? Wäre ein Gesamtpreis von 1.150 € inklusive Speditionsversand für Sie vorstellbar? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card">
@@ -771,7 +988,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>93413 Cham</span>
+            <span class='tag tag-shipping'>📦 93413 Cham</span>
             <span class="tag">XS / 48 cm</span>
             <span class="tag">Shimano Ultegra 2x11 Hydr.</span>
             <span class="tag">Marktwert ~800 €</span>
@@ -795,7 +1012,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>93149 Nittenau</span>
+            <span class='tag tag-shipping'>📦 93149 Nittenau</span>
             <span class="tag">S / 45 cm</span>
             <span class="tag">Shimano GRX 600/810 2x11 Hydr.</span>
             <span class="tag">Marktwert ~1300 €</span>
@@ -819,7 +1036,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>69517 Gorxheimertal</span>
+            <span class='tag tag-shipping'>📦 69517 Gorxheimertal</span>
             <span class="tag">S (45 cm)</span>
             <span class="tag">Shimano GRX 400 Hydr.</span>
             <span class="tag">Marktwert ~1450 €</span>
@@ -843,7 +1060,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>68167 Mannheim</span>
+            <span class='tag tag-shipping'>📦 68167 Mannheim</span>
             <span class="tag">49 cm (XS)</span>
             <span class="tag">Shimano Tiagra / Sora 2x Disc</span>
             <span class="tag">Marktwert ~580 €</span>
@@ -867,7 +1084,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>67547 Worms</span>
+            <span class='tag tag-shipping'>📦 67547 Worms</span>
             <span class="tag">XS / 49 cm</span>
             <span class="tag">Shimano Tiagra 2x10, mech. Scheibenbremsen</span>
             <span class="tag">Marktwert ~600 €</span>
@@ -876,6 +1093,30 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/scott-contessa-speedster-gravelbike-rennrad-49-cm-28-zoll/3547521016-217-5195" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, da ich wegen eines Umzugs zeitnah abholen könnte: Wären 550 € für das Contessa Speedster denkbar? Viele Grüße!')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">7.8</span>
+              <span class="model">Bulls Daily Grinder 1</span>
+            </div>
+            <div class="prices">
+              <span class="ask">750 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">550 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 51145 Porz</span>
+            <span class="tag">S / 51 cm</span>
+            <span class="tag">Shimano Claris 2x8, mech. Disc</span>
+            <span class="tag">Marktwert ~600 €</span>
+          </div>
+          <div class="verdict">Perfekter Ganzjahres-Pendler mit Schutzblechen und Licht, Claris-Schaltung drückt den Marktwert.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bulls-daily-grinder-1-51cm-gravel-bike-ca-300km-gefahren/3549058828-217-964" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe Interesse an Ihrem Daily Grinder. Passt die Rahmenhöhe von 51 cm genau? Bei passendem Zustand biete ich Ihnen 550 € bei schneller Abholung an.')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card">
@@ -954,6 +1195,30 @@
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
+              <span class="model">Canyon Grizl 5</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1200 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">900 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag local'>📍 44651 Herne</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano GRX RX400 (2x10, Hydr. Disc)</span>
+            <span class="tag">Marktwert ~980 €</span>
+          </div>
+          <div class="verdict">Neuwertiges Allwetter-Gravelbike mit 50mm Reifenfreiheit, perfekt fürs Pendeln, Preis verhandeln.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-5/3545668319-217-2000" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Grizl! Da das Modell neu für 1.299 € gelistet ist, biete ich faire 900 € bei schneller und unkomplizierter Abholung. Wäre das für Sie in Ordnung?')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row-top">
+            <div>
+              <span class="score">7.8</span>
               <span class="model">SUNN Venture S1</span>
             </div>
             <div class="prices">
@@ -963,7 +1228,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>35390 Gießen</span>
+            <span class='tag tag-shipping'>📦 35390 Gießen</span>
             <span class="tag">S / 50 cm</span>
             <span class="tag">Shimano GRX RX812 1x11 Hydr.</span>
             <span class="tag">Marktwert ~1300 €</span>
@@ -987,7 +1252,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>35435 Wettenberg</span>
+            <span class='tag tag-shipping'>📦 35435 Wettenberg</span>
             <span class="tag">S</span>
             <span class="tag">Shimano GRX 1x11 hydr.</span>
             <span class="tag">Marktwert ~1400 €</span>
@@ -1083,7 +1348,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>51145 Porz</span>
+            <span class='tag tag-shipping'>📦 51145 Porz</span>
             <span class="tag">Unbekannt (evtl. 49–52 cm)</span>
             <span class="tag">Shimano Claris 2x8, mech. Disc</span>
             <span class="tag">Marktwert ~550 €</span>
@@ -1179,7 +1444,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>74523 Schwäbisch Hall</span>
+            <span class='tag tag-shipping'>📦 74523 Schwäbisch Hall</span>
             <span class="tag">Unbekannt</span>
             <span class="tag">Shimano Claris R2000 / Mech. Disc</span>
             <span class="tag">Marktwert ~500 €</span>
@@ -1203,7 +1468,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>69168 Wiesloch</span>
+            <span class='tag tag-shipping'>📦 69168 Wiesloch</span>
             <span class="tag">Unbekannt (optisch ca. 54–56 cm)</span>
             <span class="tag">Shimano Tiagra/105 Hydr., Praxis Alba</span>
             <span class="tag">Marktwert ~1350 €</span>
@@ -1275,7 +1540,7 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag'>01159 Cotta</span>
+            <span class='tag tag-shipping'>📦 01159 Cotta</span>
             <span class="tag">Diverse (S / 50–52 cm anfragen)</span>
             <span class="tag">Shimano GRX 2x</span>
             <span class="tag">Marktwert ~1300 €</span>
