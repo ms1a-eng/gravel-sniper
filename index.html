@@ -79,6 +79,16 @@
     .tag.tag-shipping { color: #a78bfa; border-color: #4c1d95; background: #1e1338; }
     .tag.tag-buycycle { color: #c084fc; border-color: #581c87; background: #2e1065; }
     
+    .filter-pills { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 2px; }
+    .pill {
+      background: #111; color: #888; border: 1px solid #222; border-radius: 20px;
+      padding: 6px 14px; font-size: 0.78rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .pill:hover { color: #fff; border-color: #444; }
+    .pill.active { background: #262626; color: #fff; border-color: #444; }
+    .pill.pill-buycycle.active { background: #2e1065; color: #c084fc; border-color: #7e22ce; }
+    
     .verdict { font-size: 0.83rem; color: #bbb; margin-bottom: 14px; line-height: 1.4; }
     .actions { display: flex; flex-wrap: wrap; gap: 8px; }
     .btn-open, .btn-copy, .btn-secondary {
@@ -96,7 +106,7 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 23.10. 15:06</span>
+    <span class="sub">Stand: 23.10. 15:08</span>
   </header>
 
   <nav class="tabs">
@@ -110,8 +120,13 @@
 
   <!-- TAB 1: GRAVEL SNIPER -->
   <div id="tab-gravel" class="tab-content">
+    <div class="filter-pills">
+      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (62)</button>
+      <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Nur Buycycle (2)</button>
+      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Nur Kleinanzeigen (60)</button>
+    </div>
     
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">9.2</span>
@@ -135,7 +150,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich habe großes Interesse an dem Asket EQ in Größe S. Wäre bei zeitnaher Abholung und Barzahlung vor Ort ein Preis von 1.200 € machbar? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
@@ -159,7 +174,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist das Topstone noch da und sturzfrei? Wenn technisch alles einwandfrei läuft, würde ich es für 480 € zeitnah in Taunusstein abholen. Passt das für Sie? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
@@ -183,7 +198,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, handelt es sich um den Carbon-Rahmen und sind hydraulische Scheibenbremsen verbaut? Wenn technisch alles einwandfrei ist, würde ich das Rad zeitnah für 550 € abholen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
@@ -207,7 +222,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe großes Interesse am Kanzo in Gr. S. Wann passt Ihnen eine Probefahrt? Bestünde bei sofortiger Barzahlung/Mitnahme vor Ort noch Spielraum Richtung 1.600 €? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
@@ -231,7 +246,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe echtes Interesse an dem Kanzo in XS. Da Sie Geschäftsaufgabe haben: Können wir uns bei zeitnaher Barzahlung auf glatte 1.600 € einigen? Wann passt eine Probefahrt?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
@@ -255,7 +270,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Backroad in RH 47 cm. Wäre eine Probefahrt bei Ihnen in Weiterstadt möglich? Bei passendem Zustand würde ich 1.700 € zur direkten Mitnahme bieten.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -279,7 +294,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße steht auf dem Rahmenaufkleber? Falls es 47 oder 51 ist, könnte ich das Rad direkt aus der Nachbarschaft für 800 € abholen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -303,7 +318,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Nuroad! Sind Kette und Kassette nach den 2.500 km noch im ersten Satz? Bei passendem Zustand biete ich 1.050 € und könnte das Rad zeitnah abholen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -327,7 +342,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich interessiere mich für das Cube Nuroad WS C:62 in Größe S. Ist am Preis noch etwas Spielraum, wenn ich direkt für 1.180 € inkl. Versand bestelle?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -351,7 +366,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe großes Interesse an dem Nuroad. Größe S passt bei meinen 168 cm ideal und die Schutzbleche sind perfekt für meinen Arbeitsweg. Wäre eine Abholung in Wetzlar für 1.200 € zeitnah für Sie denkbar? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -375,7 +390,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ist das Nuroad WS C:62 Pro in Größe S noch verfügbar? Wäre ein Gesamtpreis von 1.200 € inklusive deutschlandweitem Speditionsversand für Sie vorstellbar?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -399,7 +414,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Nuroad C:62 WS in Größe S. Ist am Preis noch etwas Spielraum, wenn ich es direkt nehme – z.B. 1.200 € bzw. inkl. Versand? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -423,7 +438,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe Interesse an dem Nuroad WS C:62. Wäre beim Preis inklusive deutschlandweitem Versand noch etwas Spielraum auf 1.200 € glatt?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -447,7 +462,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich habe ernstes Interesse an dem Nuroad WS C:62 in Größe S. Wäre ein Abschluss für glatte 1.250 € inklusive Versand möglich? Beste Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -471,7 +486,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist die Canyon-Originalrechnung aus 2024 zwecks Restgarantie vorhanden? Ich habe echtes Kaufinteresse und biete 1.250 € bei zeitnaher Abholung.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -495,7 +510,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo! Schönes Grizl. Aus welchem Kaufjahr stammt es und wie steht es um den Ketten-/Kassettenverschleiß? Ich könnte es zeitnah für 1.400 € bar abholen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -519,7 +534,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welches genaue Modelljahr und welche GRX-Gruppe ist verbaut? Wäre eine Abholung für 1.550 € zeitnah möglich?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
@@ -543,7 +558,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Grail! Was genau macht das Di2-Schaltwerk für Probleme (nur Einstellung/Schaltauge oder Elektronikfehler)? Da Bremsbeläge und Schaltwerk Zuwendung brauchen, biete ich faire 1.650 € bei schneller Abholung. Passt das für dich?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.5</span>
@@ -567,7 +582,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe großes Interesse an dem Grail. Wäre eine Probefahrt und zeitnahe Abholung für 1.400 € möglich? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
@@ -591,7 +606,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ein schöner Aufbau! Wäre ein versicherter Versand im Fahrradkarton machbar? Wenn alles technisch einwandfrei ist, würde ich Ihnen 750 € plus Versandkosten anbieten.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
@@ -615,7 +630,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Inflite! Welche SRAM-Gruppe ist genau montiert (Apex oder Rival)? Wenn alles passt, biete ich 800 € Barzahlung bei schneller Abholung in Mainz.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
@@ -639,7 +654,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Wäre ein Kauf für 1.150 € inklusive deutschlandweitem Versand für Sie vorstellbar? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
@@ -663,7 +678,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ein schönes Diverge! Da der Neupreis für Alu/Apex am Markt inzwischen stark nachgegeben hat: Wären 1.180 € bei zeitnaher Barzahlung und Abholung in Bad Vilbel für Sie denkbar? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.3</span>
@@ -687,7 +702,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schickes Gravelbike! Da das Rad neu bei Decathlon um 850–900 € liegt: Wären 580 € bei zeitnaher Abholung in Würzburg für dich denkbar? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.3</span>
@@ -711,7 +726,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Grinder! Ist die Rahmengröße 51 cm auf dem Rahmenaufkleber bestätigt? Bei zeitnaher und unkomplizierter Barzahlung vor Ort biete ich 980 € an. Passt das für Sie?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.3</span>
@@ -735,7 +750,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo! Welche Rahmengröße hat das Grizl laut Aufkleber am Sitzrohr? Falls es Größe S (oder XS) ist, hätte ich großes Interesse und könnte es zeitnah für 1.150 € bar abholen. Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.3</span>
@@ -759,7 +774,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Revolt! Handelt es sich um ein Neufahrrad und gibt es Originalfotos sowie eine Rechnung? Für 1.500 € würde ich es zeitnah abholen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.2</span>
@@ -783,7 +798,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe Interesse an Ihrem Nuroad Race. Sind Ritzel und Bremsbeläge nach den 3.500 km noch original oder bereits getauscht worden? Wenn alles passt, könnte ich kurzfristig zur Besichtigung am Dornbusch vorbeikommen und biete Ihnen 900 € in bar. Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -807,7 +822,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße steht auf dem Aufkleber am Sitzrohr? Falls es XS oder S ist, würde ich es zeitnah für 240 € abholen kommen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -831,7 +846,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Shimano-Schaltgruppe ist genau verbaut? Da das Hinterrad zentriert werden muss, biete ich 450 € bei zeitnaher Abholung.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -855,7 +870,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, steht das Nuroad noch zum Verkauf? Sind Verschleißteile (Kette, Bremsbeläge) noch gut in Schuss? Für 550 € würde ich es zeitnah abholen kommen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -879,7 +894,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ist das Cube Nuroad WS C:62 noch verfügbar? Wäre ein Gesamtpreis von 1.150 € inklusive Speditionsversand für Sie vorstellbar? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -903,7 +918,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Ridley Kanzo in XS. Da Sie schließen: Wäre bei sofortiger Barzahlung und Abholung vor Ort ein Preis von 1.350 € machbar? Wann passt eine Probefahrt?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -927,7 +942,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe Interesse an dem Gavere in RH 51 cm. Wäre eine Probefahrt vor Ort in Seeheim zeitnah möglich? Ließe sich am Preis noch etwas machen, z.B. glatt 1.500 € bei Barzahlung/EC?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -951,7 +966,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Orbea Terra M30Team in XS (Artikel-Nr. 281590). Ist das Rad aktuell noch im Store in Frankfurt verfügbar für eine Probefahrt?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -975,7 +990,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Diverge Sport Carbon in RH 52. Ist das Rad sturzfrei und kann ich es zeitnah in Weiterstadt probefahren? Bei passender Probefahrt biete ich 1.750 € bei direkter Abholung. Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.9</span>
@@ -999,7 +1014,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schöner Aufbau in genau meiner Rahmengröße! Da Cham etwas weit ist: Wäre ein versicherter Versand im Radkarton möglich und könnten wir uns auf 750 € einigen?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.9</span>
@@ -1023,7 +1038,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Conway! Ist der Carbonrahmen komplett riss- und sturzfrei? Wenn alles passt, würde ich es zeitnah für 1.200 € abholen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.9</span>
@@ -1047,7 +1062,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, gibt es Originalfotos vom aktuellen Zustand und eine Erstkaufrechnung? Falls alles einwandfrei ist, biete ich 1.350 € bei zeitnaher Abholung an.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1071,7 +1086,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Schaltungskomponenten (Tiagra/Sora) sind verbaut? Wenn alles passt, könnte ich das Rad zeitnah für 540 € bar in Mannheim abholen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1095,7 +1110,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, da ich wegen eines Umzugs zeitnah abholen könnte: Wären 550 € für das Contessa Speedster denkbar? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1119,7 +1134,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe Interesse an Ihrem Daily Grinder. Passt die Rahmenhöhe von 51 cm genau? Bei passendem Zustand biete ich Ihnen 550 € bei schneller Abholung an.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1143,7 +1158,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Rad! Funktioniert die Lichtanlage einwandfrei und sind die Belege der letzten Inspektion vorhanden? Für 650 € würde ich es zeitnah abholen kommen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1167,7 +1182,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, wie ist der Verschleißzustand von Kette und Bremsbelägen? Wenn alles passt, könnte ich das Rad zeitnah für 700 € abholen. Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1191,7 +1206,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes X-Trail. Ist die maximale Reifenfreiheit bei 38 mm und sind Schutzblechösen vorhanden? Bei passendem Zustand biete ich 820 € bar bei zeitnaher Abholung.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1215,7 +1230,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Grizl! Da das Modell neu für 1.299 € gelistet ist, biete ich faire 900 € bei schneller und unkomplizierter Abholung. Wäre das für Sie in Ordnung?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1239,7 +1254,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das SUNN Venture S1 in RH 50. Wäre ein Barzahler-Preis von 1.250 € bei zeitnaher Abholung vor Ort machbar?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1263,7 +1278,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Nuroad! Ist das Modelljahr 2021/2022 mit GRX 1x11? Wenn der Carbonrahmen sturz- und rissfrei ist, biete ich 1.350 € bei schneller Abholung. Passt das für dich? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1287,7 +1302,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich komme direkt aus der Region und könnte das Grail zeitnah in Darmstadt besichtigen. Da Kette, Kassette und Lenkerband zeitnah neu müssen (ca. 150–200 € Material), biete ich dir 1.450 € bei unkomplizierter Abholung an. Passt das für dich?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1311,7 +1326,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, habt ihr das Corratec Allroad Travel EQ aktuell in Rahmengröße S vor Ort zum Probefahren da? Wäre bei Barzahlung/Sofortkauf preislich noch etwas Spielraum Richtung 1.450 €? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
@@ -1335,7 +1350,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Grizl! Wie steht es um den Verschleiß von Kette und Kassette nach den 3.500 km? Da das Lenkerband fällig ist, biete ich 1.650 € bei schneller Abholung in Koblenz.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.4</span>
@@ -1359,7 +1374,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmenhöhe steht genau auf dem Aufkleber am Sitzrohr? Falls es Rahmengröße 49 oder 52 ist: Ich könnte es für 520 € zeitnah und unkompliziert abholen. Passt das für dich? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.4</span>
@@ -1383,7 +1398,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Inflite! Gibt es die Originalrechnung noch dazu und wie alt sind Reifen bzw. Verschleißteile nach der Standzeit? Wenn alles passt, könnte ich es zeitnah aus der Region abholen und biete 850 € bar. Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.4</span>
@@ -1407,7 +1422,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Modell in Schwarz Größe S. Gibt es eine Rechnung mit Händlergewährleistung dazu und wäre ein Preis von 1.100 € inklusive Versand machbar? Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.4</span>
@@ -1431,7 +1446,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Territ Pro. Habt ihr das Rad aktuell in Rahmengröße S (für 168 cm) vor Ort zur Probefahrt da? Wäre am Preis noch etwas Spielraum oder gäbe es Schutzbleche/Pedale dazu?')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.3</span>
@@ -1455,7 +1470,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmenhöhe hat das Daily Grinder genau (steht meist am Sitzrohr)? Wenn es Größe 49 oder 52 cm ist, würde ich es für 450 € zeitnah abholen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.3</span>
@@ -1479,7 +1494,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße (bzw. Rahmenhöhe in cm laut Aufkleber am Sitzrohr) hat das Diverge? Falls es Größe 49 oder 52 ist, würde ich 1.150 € bei zeitnaher Abholung anbieten.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="buycycle">
           <div class="row-top">
             <div>
               <span class="score">7.3</span>
@@ -1503,7 +1518,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist das Grizl sturzfrei und wie hoch ist die bisherige Laufleistung? Ich biete 1.150 € bei direkter Abwicklung.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.3</span>
@@ -1527,7 +1542,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe Interesse an Ihrem Grail CF SL 7. Ist die Originalrechnung von November 2023 vorhanden und sind Sturzschäden auszuschließen? Wenn alles passt, biete ich 1.550 € bei zeitnaher Abholung an. Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="buycycle">
           <div class="row-top">
             <div>
               <span class="score">7.2</span>
@@ -1551,7 +1566,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, gibt es Stürze/Kratzer und wie steht es um den Ketten- und Reifenverschleiß? Bei einem Gegenangebot von 780 € würde ich direkt bestellen.')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.2</span>
@@ -1575,7 +1590,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich interessiere mich für das Orbea Terra H45 in Gr. XS. Da XS eine spezielle Nischengröße ist: Wäre eine zeitnahe Abholung für 1.300 € glatt machbar? Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card">
+        <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
               <span class="score">7.1</span>
@@ -1721,6 +1736,18 @@
       document.getElementById('tab-' + name).style.display = 'block';
       document.getElementById('btn-' + name).classList.add('active');
       window.location.hash = name;
+    }
+
+    function filterPlatform(e, plat) {
+      document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
+      e.target.classList.add('active');
+      document.querySelectorAll('#tab-gravel .card').forEach(card => {
+        if (plat === 'all' || card.getAttribute('data-platform') === plat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     }
 
     function copyMsg(btn, txt) {
