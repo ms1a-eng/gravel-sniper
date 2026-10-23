@@ -78,8 +78,10 @@
     .tag.tag-accent { color: #fbbf24; border-color: #78350f; background: #1f1604; }
     .tag.tag-shipping { color: #a78bfa; border-color: #4c1d95; background: #1e1338; }
     .tag.tag-buycycle { color: #c084fc; border-color: #581c87; background: #2e1065; }
+    .tag.tag-bikemarkt { color: #38bdf8; border-color: #0369a1; background: #0c2d48; }
+    .tag.tag-outlet { color: #34d399; border-color: #047857; background: #064e3b; }
     
-    .filter-pills { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 2px; }
+    .filter-pills { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 4px; }
     .pill {
       background: #111; color: #888; border: 1px solid #222; border-radius: 20px;
       padding: 6px 14px; font-size: 0.78rem; font-weight: 600; cursor: pointer; white-space: nowrap;
@@ -88,6 +90,8 @@
     .pill:hover { color: #fff; border-color: #444; }
     .pill.active { background: #262626; color: #fff; border-color: #444; }
     .pill.pill-buycycle.active { background: #2e1065; color: #c084fc; border-color: #7e22ce; }
+    .pill.pill-bikemarkt.active { background: #0c2d48; color: #38bdf8; border-color: #0284c7; }
+    .pill.pill-outlet.active { background: #064e3b; color: #34d399; border-color: #10b981; }
     
     .verdict { font-size: 0.83rem; color: #bbb; margin-bottom: 14px; line-height: 1.4; }
     .actions { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -106,12 +110,12 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 23.10. 15:08</span>
+    <span class="sub">Stand: 23.10. 15:29</span>
   </header>
 
   <nav class="tabs">
     <button id="btn-gravel" class="tab-btn active" onclick="switchTab('gravel')">
-      🚲 Gravel Sniper <span class="badge">62</span>
+      🚲 Gravel Sniper <span class="badge">71</span>
     </button>
     <button id="btn-fast" class="tab-btn tab-fast-btn" onclick="switchTab('fast')">
       ⚡ Fast Finds <span class="badge">4</span>
@@ -121,11 +125,37 @@
   <!-- TAB 1: GRAVEL SNIPER -->
   <div id="tab-gravel" class="tab-content">
     <div class="filter-pills">
-      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (62)</button>
-      <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Nur Buycycle (2)</button>
-      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Nur Kleinanzeigen (60)</button>
+      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (71)</button>
+      <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Buycycle (5)</button>
+      <button class="pill pill-bikemarkt" onclick="filterPlatform(event, 'bikemarkt')">🚲 Bikemarkt (1)</button>
+      <button class="pill pill-outlet" onclick="filterPlatform(event, 'outlet')">🏪 Outlets / Neu (4)</button>
+      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (61)</button>
     </div>
     
+        <div class="card" data-platform="outlet">
+          <div class="row-top">
+            <div>
+              <span class="score">9.3</span>
+              <span class="model">Radon REGARD AL 7.0</span>
+            </div>
+            <div class="prices">
+              <span class="ask">999 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">999 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-outlet'>🏪 Bike-Discount (Neuware / Garantie)</span>
+            <span class="tag">50 (S)</span>
+            <span class="tag">Shimano CUES 1x10 Hydr.</span>
+            <span class="tag">Marktwert ~1200 €</span>
+          </div>
+          <div class="verdict">Neuware unter 1.000 €: Volle Garantie, hydraulische Discs & Schutzblech-Ösen.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.bike-discount.de/de/radon-regard-al-7.0" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+          </div>
+        </div>
         <div class="card" data-platform="kleinanzeigen">
           <div class="row-top">
             <div>
@@ -148,6 +178,54 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/ghost-asket-eq-gravel-bike-2026-rh-s-calm-oasis-midnight-teal/3491342221-217-4814" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich habe großes Interesse an dem Asket EQ in Größe S. Wäre bei zeitnaher Abholung und Barzahlung vor Ort ein Preis von 1.200 € machbar? Viele Grüße!')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="outlet">
+          <div class="row-top">
+            <div>
+              <span class="score">9.0</span>
+              <span class="model">Triban RC 500 Disc</span>
+            </div>
+            <div class="prices">
+              <span class="ask">649 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">649 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-outlet'>🏪 Decathlon (Neuware / Garantie)</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano Sora 2x9 Disc</span>
+            <span class="tag">Marktwert ~750 €</span>
+          </div>
+          <div class="verdict">Unschlagbarer Einstiegspreis für 168 cm mit voller Decathlon-Garantie.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.decathlon.de/p/rennrad-triban-rc-500-scheibenbremse/_/R-p-301728" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="kleinanzeigen">
+          <div class="row-top">
+            <div>
+              <span class="score">8.9</span>
+              <span class="model">Cannondale Topstone Neo SL 2</span><span class='tag sleeper'>Sleeper</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1200 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">1050 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 30419 Herrenhausen-Stöcken</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano GRX 400 2x10 Hydr.</span>
+            <span class="tag">Marktwert ~1400 €</span>
+          </div>
+          <div class="verdict">Perfekte Größe S, E-Support für 26 km Pendelstrecke extrem günstig.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-neo-sl-2-e-gravelbike-groesse-s/3549144433-217-3178" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo! Ist das Ladekabel dabei und wie steht es um den Akku-Gesundheitszustand in der Mahle-App? Wenn alles passt, würde ich 1.050 € bar bei zeitnaher Abholung bieten.')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen">
@@ -196,6 +274,78 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/focus-mares-cyclocross-rad-groesse-s-ultegra-dt-swiss/3548341989-217-1889" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, handelt es sich um den Carbon-Rahmen und sind hydraulische Scheibenbremsen verbaut? Wenn technisch alles einwandfrei ist, würde ich das Rad zeitnah für 550 € abholen.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="bikemarkt">
+          <div class="row-top">
+            <div>
+              <span class="score">8.8</span>
+              <span class="model">Ridley Kanzo Adventure</span><span class='tag sleeper'>Sleeper</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1100 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">950 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-bikemarkt'>🚲 Bikemarkt (MTB-News)</span>
+            <span class="tag">Unbekannt</span>
+            <span class="tag">Unbekannt</span>
+            <span class="tag">Marktwert ~1350 €</span>
+          </div>
+          <div class="verdict">Top Gravel-Geometrie für Pendler, fauler Verkäufer birgt enormes Schnäppchen-Potenzial.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://bikemarkt.mtb-news.de/article/1798955-ridley-kanzo-adventure" target="_blank" rel="noopener">Im Bikemarkt öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße hat das Kanzo und welche Schaltgruppe ist verbaut? Bei passender Größe (S/XS) würde ich zeitnah 950 € bieten.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="buycycle">
+          <div class="row-top">
+            <div>
+              <span class="score">8.8</span>
+              <span class="model">Cube Nuroad Race FE 2023</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1179 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1050 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-buycycle'>🛡️ Buycycle (Käuferschutz)</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano GRX 810/600 2x11</span>
+            <span class="tag">Marktwert ~1100 €</span>
+          </div>
+          <div class="verdict">Perfekter Pendler-Vollausstatter mit Licht und Schutzblechen in passender Größe S.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://buycycle.com/de-de/product/nuroad-race-fe-2023-65492" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, wie ist der Zustand von Kette und Kassette? Wäre ein Preisvorschlag von 1.050 € inkl. Versand denkbar?')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="outlet">
+          <div class="row-top">
+            <div>
+              <span class="score">8.8</span>
+              <span class="model">Canyon Outlet Grizl / Grail</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1299 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-outlet'>🏪 Canyon Outlet (Geprüfte B-Ware)</span>
+            <span class="tag">XS / S</span>
+            <span class="tag">Shimano GRX / SRAM Apex</span>
+            <span class="tag">Marktwert ~1500 €</span>
+          </div>
+          <div class="verdict">Werksgarantie direkt von Canyon für Rückläufer und Auslaufmodelle.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.canyon.com/de-de/outlet-fahrraeder/gravel-bikes/" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen">
@@ -586,6 +736,30 @@
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
+              <span class="model">Focus Mares AX Disc</span><span class='tag sleeper'>Sleeper</span>
+            </div>
+            <div class="prices">
+              <span class="ask">480 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">420 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 83024 Rosenheim</span>
+            <span class="tag">XS</span>
+            <span class="tag">Shimano 105 / TRP Disc</span>
+            <span class="tag">Marktwert ~550 €</span>
+          </div>
+          <div class="verdict">Perfekte Größe XS, zwei Laufradsätze inklusive und unschlagbar günstiger Einstiegspreis.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-rennrad/3509723300-217-7582" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welcher TRP-Bremssattel ist genau montiert (Spyre/Hy-Rd) und versendest du das Rad? Falls ja, biete ich 420 € plus Versand.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="kleinanzeigen">
+          <div class="row-top">
+            <div>
+              <span class="score">8.4</span>
               <span class="model">Norco Threshold AL Custom</span>
             </div>
             <div class="prices">
@@ -676,6 +850,30 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/gravelbike-damen-specialized-diverge-comp-e5-groesse-49/3486104675-217-4548" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ein schönes Diverge! Da der Neupreis für Alu/Apex am Markt inzwischen stark nachgegeben hat: Wären 1.180 € bei zeitnaher Barzahlung und Abholung in Bad Vilbel für Sie denkbar? Viele Grüße!')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="buycycle">
+          <div class="row-top">
+            <div>
+              <span class="score">8.4</span>
+              <span class="model">Cube Nuroad C:62 Pro (2023)</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1573 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1400 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-buycycle'>🛡️ Buycycle (Käuferschutz)</span>
+            <span class="tag">S (ca. 53 cm)</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1450 €</span>
+          </div>
+          <div class="verdict">Moderner Carbon-Graveler in passender Größe, perfekt für 26 km Pendelstrecke.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://buycycle.com/de-de/product/nuroad-c62-pro-2023-34187" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, wie ist der Zustand von Antrieb und Reifen? Wäre ein Gegenangebot von 1.400 € inklusive Käuferschutz denkbar?')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen">
@@ -798,7 +996,7 @@
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe Interesse an Ihrem Nuroad Race. Sind Ritzel und Bremsbeläge nach den 3.500 km noch original oder bereits getauscht worden? Wenn alles passt, könnte ich kurzfristig zur Besichtigung am Dornbusch vorbeikommen und biete Ihnen 900 € in bar. Viele Grüße!')">Gebot-Text kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen">
+        <div class="card" data-platform="outlet">
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
@@ -811,14 +1009,14 @@
             </div>
           </div>
           <div class="meta">
-            <span class='tag local'>📍 56077 Koblenz</span>
+            <span class='tag tag-outlet'>🏪 56077 Koblenz</span>
             <span class="tag">Unbekannt (vermutlich XS/S lt. Schuhgröße 40)</span>
             <span class="tag">Microshift 2x8 / Mechanische Scheibenbremsen</span>
             <span class="tag">Marktwert ~330 €</span>
           </div>
           <div class="verdict">Perfekter Low-Budget-Pendler mit Scheibenbremsen; Schuhgröße 40 deutet auf passendes S/XS hin.</div>
           <div class="actions">
-            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/rennrad-triban-decathlon/3545906856-217-5421" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/rennrad-triban-decathlon/3545906856-217-5421" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße steht auf dem Aufkleber am Sitzrohr? Falls es XS oder S ist, würde ich es zeitnah für 240 € abholen kommen.')">Gebot-Text kopieren</button>
           </div>
         </div>
@@ -1060,6 +1258,30 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-3-28-zoll-diamant-rh-s/3516078741-217-8264" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, gibt es Originalfotos vom aktuellen Zustand und eine Erstkaufrechnung? Falls alles einwandfrei ist, biete ich 1.350 € bei zeitnaher Abholung an.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="buycycle">
+          <div class="row-top">
+            <div>
+              <span class="score">7.9</span>
+              <span class="model">Specialized Crux Comp (2022)</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1733 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1600 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-buycycle'>🛡️ Buycycle (Käuferschutz)</span>
+            <span class="tag">52 cm (S)</span>
+            <span class="tag">SRAM Rival 1 Hydr.</span>
+            <span class="tag">Marktwert ~1700 €</span>
+          </div>
+          <div class="verdict">Edler Carbon-Graveler mit 47 mm Reifenfreiheit; Schutzbleche gehen nur per Clip-on.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://buycycle.com/de-de/product/crux-comp-2022-36755" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, wie steht es um den Verschleiß von Kette, Kassette und Reifen? Wäre ein Gegenangebot von 1.600 € vorstellbar?')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen">
