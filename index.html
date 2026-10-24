@@ -110,12 +110,12 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 23.10. 21:27</span>
+    <span class="sub">Stand: 24.10. 12:36</span>
   </header>
 
   <nav class="tabs">
     <button id="btn-gravel" class="tab-btn active" onclick="switchTab('gravel')">
-      🚲 Gravel Sniper <span class="badge">84</span>
+      🚲 Gravel Sniper <span class="badge">88</span>
     </button>
     <button id="btn-fast" class="tab-btn tab-fast-btn" onclick="switchTab('fast')">
       ⚡ Fast Finds <span class="badge">4</span>
@@ -125,11 +125,11 @@
   <!-- TAB 1: GRAVEL SNIPER -->
   <div id="tab-gravel" class="tab-content">
     <div class="filter-pills">
-      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (84)</button>
+      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (88)</button>
       <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Buycycle (15)</button>
-      <button class="pill pill-bikemarkt" onclick="filterPlatform(event, 'bikemarkt')">🚲 Bikemarkt (3)</button>
+      <button class="pill pill-bikemarkt" onclick="filterPlatform(event, 'bikemarkt')">🚲 Bikemarkt (4)</button>
       <button class="pill pill-outlet" onclick="filterPlatform(event, 'outlet')">🏪 Outlets / Neu (4)</button>
-      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (62)</button>
+      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (65)</button>
     </div>
     
         <div class="card" data-platform="bikemarkt">
@@ -832,6 +832,30 @@
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
+              <span class="model">Cube Nuroad</span>
+            </div>
+            <div class="prices">
+              <span class="ask">500 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">420 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 52224 Stolberg (Rhld)</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano Claris 2x8 / Mech. Disc</span>
+            <span class="tag">Marktwert ~500 €</span>
+          </div>
+          <div class="verdict">Perfekte Größe S, Schutzbleche dran: unschlagbar günstiges Winter-Pendelrad ohne Schnickschnack.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-gravelbike-groesse-s/3550091211-217-1733" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist das Nuroad sturzfrei und aus welchem Kaufjahr stammt die Rechnung? Falls alles passt, würde ich es für 420 € inkl. Schutzblechen zeitnah abholen.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="kleinanzeigen">
+          <div class="row-top">
+            <div>
+              <span class="score">8.4</span>
               <span class="model">Norco Threshold AL Custom</span>
             </div>
             <div class="prices">
@@ -946,6 +970,30 @@
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/topstone-1-2026-18345" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Topstone! Ist das Rad komplett sturzfrei und wie steht es um den Kettenverschleiß? Für 1.180 € inkl. Versand würde ich direkt zuschlagen.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="kleinanzeigen">
+          <div class="row-top">
+            <div>
+              <span class="score">8.4</span>
+              <span class="model">Cube Nuroad WS C:62 Pro</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1200 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 50670 Köln Altstadt</span>
+            <span class="tag">S (ca. 50-52 cm)</span>
+            <span class="tag">Shimano GRX 1x11 Hydr.</span>
+            <span class="tag">Marktwert ~1350 €</span>
+          </div>
+          <div class="verdict">Perfekter Pendler mit Carbonrahmen, Schutzblechen, Gepäckträger und 12 Monaten Händlergarantie.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-store-koeln-bio-bikes-/3550047414-217-984" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Nuroad WS C:62 Pro in Größe S (B-21168). Wäre ein Gesamtpreis von 1.250 € inklusive deutschlandweitem Speditionsversand für Sie machbar?')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle">
@@ -1666,6 +1714,54 @@
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/diverge-comp-e5-2022-56139" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Diverge! Wie steht es um Kette und Bremsbeläge? Biete 1.000 € inklusive Kaufabwicklung.')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="kleinanzeigen">
+          <div class="row-top">
+            <div>
+              <span class="score">7.8</span>
+              <span class="model">Stevens Vapor Disc (2023)</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1279 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">1050 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag local'>📍 64331 Weiterstadt</span>
+            <span class="tag">S / 50 cm</span>
+            <span class="tag">Shimano GRX 1x11 hydr.</span>
+            <span class="tag">Marktwert ~1050 €</span>
+          </div>
+          <div class="verdict">Perfekte Rahmenhöhe und direkt vor Ort, aber sportliche CX-Geometrie und Rennradreifen.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/stevens-vapor-1-11-2023-koerpergroesse-160-169-cm-rh-50-cm-shimano-grx-11-gaenge/3550117961-217-4516" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Stevens Vapor in RH 50. Lässt sich das Rad für glatte 1.050 € vor Ort in Weiterstadt abholen?')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="bikemarkt">
+          <div class="row-top">
+            <div>
+              <span class="score">7.8</span>
+              <span class="model">Canyon Grail CF SL 7</span><span class='tag sleeper'>Sleeper</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1490 € VB</span>
+              <span class="arrow">→</span>
+              <span class="bid">1200 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-bikemarkt'>🚲 Bikemarkt (MTB-News)</span>
+            <span class="tag">Unbekannt</span>
+            <span class="tag">Shimano GRX (hydr. Scheibenbremsen)</span>
+            <span class="tag">Marktwert ~1350 €</span>
+          </div>
+          <div class="verdict">Starkes Carbon-Gravelbike; Rahmengröße XS oder S muss zwingend geklärt werden.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://bikemarkt.mtb-news.de/article/1802033-canyon-grail-cf-sl-7-carbon" target="_blank" rel="noopener">Im Bikemarkt öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße hat das Grail (steht unten am Sitzrohr)? Wie ist der Zustand von Kette und Reifen? Falls es Größe XS oder S ist, würde ich 1.200 € anbieten. Viele Grüße')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen">
