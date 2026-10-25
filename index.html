@@ -110,12 +110,12 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 24.10. 14:38</span>
+    <span class="sub">Stand: 24.10. 20:45</span>
   </header>
 
   <nav class="tabs">
     <button id="btn-gravel" class="tab-btn active" onclick="switchTab('gravel')">
-      🚲 Gravel Sniper <span class="badge">89</span>
+      🚲 Gravel Sniper <span class="badge">90</span>
     </button>
     <button id="btn-fast" class="tab-btn tab-fast-btn" onclick="switchTab('fast')">
       ⚡ Fast Finds <span class="badge">4</span>
@@ -125,11 +125,11 @@
   <!-- TAB 1: GRAVEL SNIPER -->
   <div id="tab-gravel" class="tab-content">
     <div class="filter-pills">
-      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (89)</button>
+      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (90)</button>
       <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Buycycle (16)</button>
       <button class="pill pill-bikemarkt" onclick="filterPlatform(event, 'bikemarkt')">🚲 Bikemarkt (4)</button>
       <button class="pill pill-outlet" onclick="filterPlatform(event, 'outlet')">🏪 Outlets / Neu (4)</button>
-      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (65)</button>
+      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (66)</button>
     </div>
     
         <div class="card" data-platform="bikemarkt">
@@ -994,6 +994,30 @@
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-store-koeln-bio-bikes-/3550047414-217-984" target="_blank" rel="noopener">Inserat öffnen ↗</a>
             <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich interessiere mich für das Nuroad WS C:62 Pro in Größe S (B-21168). Wäre ein Gesamtpreis von 1.250 € inklusive deutschlandweitem Speditionsversand für Sie machbar?')">Gebot-Text kopieren</button>
+          </div>
+        </div>
+        <div class="card" data-platform="kleinanzeigen">
+          <div class="row-top">
+            <div>
+              <span class="score">8.4</span>
+              <span class="model">Cube Nuroad EX</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1299 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1200 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag tag-shipping'>📦 87719 Mindelheim</span>
+            <span class="tag">S</span>
+            <span class="tag">Shimano GRX 1x12 (RX822/RX610 Hydr.)</span>
+            <span class="tag">Marktwert ~1299 €</span>
+          </div>
+          <div class="verdict">Fabrikneu mit modernster 1x12 GRX, 45mm Reifenfreiheit und passender Größe S.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ex-neu-mj2027-gr-s-m/3521782415-217-7260" target="_blank" rel="noopener">Inserat öffnen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist das Nuroad EX in Größe S noch verfügbar? Wäre bei Abholung bzw. Versand preislich noch 1.200 € machbar?')">Gebot-Text kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle">
