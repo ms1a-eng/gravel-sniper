@@ -111,12 +111,12 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 25.10. 21:16</span>
+    <span class="sub">Stand: 25.10. 21:19</span>
   </header>
 
   <nav class="tabs">
     <button id="btn-gravel" class="tab-btn active" onclick="switchTab('gravel')">
-      🚲 Gravel Sniper <span class="badge">105</span>
+      🚲 Gravel Sniper <span class="badge">106</span>
     </button>
     <button id="btn-fast" class="tab-btn tab-fast-btn" onclick="switchTab('fast')">
       ⚡ Fast Finds <span class="badge">4</span>
@@ -126,9 +126,9 @@
   <!-- TAB 1: GRAVEL SNIPER -->
   <div id="tab-gravel" class="tab-content">
     <div class="filter-pills">
-      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (105)</button>
+      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (106)</button>
       <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (79)</button>
-      <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Buycycle (17)</button>
+      <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Buycycle (18)</button>
       <button class="pill pill-bikemarkt" onclick="filterPlatform(event, 'bikemarkt')">🚲 Bikemarkt (4)</button>
       <button class="pill pill-outlet" onclick="filterPlatform(event, 'outlet')">🏪 Outlets / Neu (5)</button>
     </div>
@@ -138,6 +138,32 @@
     </div>
     <div id="gravel-list">
       
+        <div class="card" data-platform="buycycle" data-ts="1792959480" data-score="7.80">
+          <div class="row-top">
+            <div>
+              <span class="score">7.8</span>
+              <span class="model">Canyon Grizl CF 6 AXS</span><span class='tag tag-new'>🔥 NEU</span>
+            </div>
+            <div class="prices">
+              <span class="ask">1743 €</span>
+              <span class="arrow">→</span>
+              <span class="bid">1550 €</span>
+            </div>
+          </div>
+          <div class="meta">
+            <span class='tag'>🕒 25.10. 21:18</span>
+            
+            <span class='tag tag-buycycle'>🛡️ Buycycle (Käuferschutz)</span>
+            <span class="tag">S</span>
+            <span class="tag">SRAM Apex eTap AXS</span>
+            <span class="tag">Marktwert ~1650 €</span>
+          </div>
+          <div class="verdict">Achtung: Ridley/Canyon S fällt groß aus! Starkes Carbon-Gravel mit Apex AXS.</div>
+          <div class="actions">
+            <a class="btn-open" href="https://buycycle.com/de-de/product/grizl-cf-6-2026-43929" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
+            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Grizl! Wäre am Bike interessiert. Lässt sich am Preis noch etwas machen, z. B. 1.550 € über Buycycle? Viele Grüße')">Gebot-Text kopieren</button>
+          </div>
+        </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="1792933260" data-score="7.90">
           <div class="row-top">
             <div>
