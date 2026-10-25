@@ -95,6 +95,39 @@
     .pill.pill-outlet.active { background: #064e3b; color: #34d399; border-color: #10b981; }
     
     .verdict { font-size: 0.83rem; color: #bbb; margin-bottom: 14px; line-height: 1.4; }
+    .msg-box {
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-left: 3px solid #fbbf24;
+      border-radius: 6px;
+      padding: 9px 12px;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+    .msg-header {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fbbf24;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      letter-spacing: 0.3px;
+    }
+    .msg-bid-badge {
+      font-size: 0.68rem;
+      color: #4ade80;
+      font-weight: 600;
+      background: #14532d33;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .msg-text {
+      color: #e5e5e5;
+      font-size: 0.79rem;
+      user-select: all;
+    }
     .actions { display: flex; flex-wrap: wrap; gap: 8px; }
     .btn-open, .btn-copy, .btn-secondary {
       flex: 1; text-align: center; padding: 8px 12px; border-radius: 5px; min-width: 130px;
@@ -111,7 +144,7 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 25.10. 21:19</span>
+    <span class="sub">Stand: 25.10. 21:44</span>
   </header>
 
   <nav class="tabs">
@@ -159,9 +192,16 @@
             <span class="tag">Marktwert ~1650 €</span>
           </div>
           <div class="verdict">Achtung: Ridley/Canyon S fällt groß aus! Starkes Carbon-Gravel mit Apex AXS.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1550 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-0">Hallo, schönes Grizl! Wäre am Bike interessiert. Lässt sich am Preis noch etwas machen, z. B. 1.550 € über Buycycle? Viele Grüße</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/grizl-cf-6-2026-43929" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Grizl! Wäre am Bike interessiert. Lässt sich am Preis noch etwas machen, z. B. 1.550 € über Buycycle? Viele Grüße')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-0')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="1792933260" data-score="7.90">
@@ -185,9 +225,16 @@
             <span class="tag">Marktwert ~1100 €</span>
           </div>
           <div class="verdict">Achtung: Ridley S fällt groß aus (eher ab 172 cm) – erst probesitzen!</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 850 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-1">Hallo, schönes Kanzo A! Gibt es Stürze oder tiefere Kratzer? Wenn alles passt, könnte ich es zeitnah für 850 € bar abholen kommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/ridley-kanzo-a-gravelbike-grx/3548473620-217-4806" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Kanzo A! Gibt es Stürze oder tiefere Kratzer? Wenn alles passt, könnte ich es zeitnah für 850 € bar abholen kommen. Viele Grüße!')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-1')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="1792776300" data-score="9.10">
@@ -211,9 +258,16 @@
             <span class="tag">Marktwert ~1450 €</span>
           </div>
           <div class="verdict">Top Carbon-Graveler mit 50mm Reifenfreiheit, perfekt für 26km Ganzjahres-Pendeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1150 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-2">Hallo, wie ist der Verschleißzustand von Kette, Kassette und Bremsen? Wäre ein Direktkauf für 1.150 € denkbar?</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/grizl-cf-sl-7-2023-49751" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, wie ist der Verschleißzustand von Kette, Kassette und Bremsen? Wäre ein Direktkauf für 1.150 € denkbar?')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-2')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="1792776300" data-score="8.70">
@@ -237,9 +291,16 @@
             <span class="tag">Marktwert ~1950 €</span>
           </div>
           <div class="verdict">Perfektes Winter-Pendelrad mit 50mm Reifenfreiheit und kabelloser eTap-Schaltung.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1650 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-3">Hallo, wie ist der Zustand von Kette, Kassette und Bremsbelägen? Wäre ein Gegenangebot über 1.650 € für Sie vorstellbar?</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/grizl-sram-rival-etap-axs-37687" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, wie ist der Zustand von Kette, Kassette und Bremsbelägen? Wäre ein Gegenangebot über 1.650 € für Sie vorstellbar?')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-3')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="bikemarkt" data-ts="1792769100" data-score="9.80">
@@ -263,9 +324,16 @@
             <span class="tag">Marktwert ~1800 €</span>
           </div>
           <div class="verdict">Extremer High-End-Sleeper: 2024er SLT mit AXS und Carbon-Laufrädern zum Spottpreis.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1150 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-4">Hallo, ich habe großes Interesse an dem Nuroad in Größe S und könnte es zeitnah in Bretten abholen. Handelt es sich um den originalen C:62 Carbonrahmen? Wären 1.150 € bei schneller Abholung für Sie in Ordnung? Viele Grüße</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://bikemarkt.mtb-news.de/article/1802032-cube-nuroad" target="_blank" rel="noopener">Im Bikemarkt öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich habe großes Interesse an dem Nuroad in Größe S und könnte es zeitnah in Bretten abholen. Handelt es sich um den originalen C:62 Carbonrahmen? Wären 1.150 € bei schneller Abholung für Sie in Ordnung? Viele Grüße')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-4')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="1792762080" data-score="8.90">
@@ -289,9 +357,16 @@
             <span class="tag">Marktwert ~1400 €</span>
           </div>
           <div class="verdict">Perfekte Größe S, E-Support für 26 km Pendelstrecke extrem günstig.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1050 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-5">Hallo! Ist das Ladekabel dabei und wie steht es um den Akku-Gesundheitszustand in der Mahle-App? Wenn alles passt, würde ich 1.050 € bar bei zeitnaher Abholung bieten.</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-neo-sl-2-e-gravelbike-groesse-s/3549144433-217-3178" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo! Ist das Ladekabel dabei und wie steht es um den Akku-Gesundheitszustand in der Mahle-App? Wenn alles passt, würde ich 1.050 € bar bei zeitnaher Abholung bieten.')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-5')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="1792762080" data-score="8.40">
@@ -315,9 +390,16 @@
             <span class="tag">Marktwert ~550 €</span>
           </div>
           <div class="verdict">Perfekte Größe XS, zwei Laufradsätze inklusive und unschlagbar günstiger Einstiegspreis.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 420 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-6">Hallo, welcher TRP-Bremssattel ist genau montiert (Spyre/Hy-Rd) und versendest du das Rad? Falls ja, biete ich 420 € plus Versand.</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-rennrad/3509723300-217-7582" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welcher TRP-Bremssattel ist genau montiert (Spyre/Hy-Rd) und versendest du das Rad? Falls ja, biete ich 420 € plus Versand.')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-6')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="outlet" data-ts="1792762020" data-score="9.30">
@@ -341,9 +423,16 @@
             <span class="tag">Marktwert ~1200 €</span>
           </div>
           <div class="verdict">Neuware unter 1.000 €: Volle Garantie, hydraulische Discs & Schutzblech-Ösen.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 999 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-7">Direkt beim Händler (999 € Festpreis mit voller Herstellergarantie und 14-30 Tagen Rückgaberecht).</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.bike-discount.de/de/radon-regard-al-7.0" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-7')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="outlet" data-ts="1792762020" data-score="9.00">
@@ -367,9 +456,16 @@
             <span class="tag">Marktwert ~750 €</span>
           </div>
           <div class="verdict">Unschlagbarer Einstiegspreis für 168 cm mit voller Decathlon-Garantie.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 649 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-8">Direkt beim Händler (649 € Festpreis mit voller Herstellergarantie und 14-30 Tagen Rückgaberecht).</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.decathlon.de/p/rennrad-triban-rc-500-scheibenbremse/_/R-p-301728" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-8')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="bikemarkt" data-ts="1792762020" data-score="8.80">
@@ -393,9 +489,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Top Gravel-Geometrie für Pendler, fauler Verkäufer birgt enormes Schnäppchen-Potenzial.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 950 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-9">Hallo, welche Rahmengröße hat das Kanzo und welche Schaltgruppe ist verbaut? Bei passender Größe (S/XS) würde ich zeitnah 950 € bieten.</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://bikemarkt.mtb-news.de/article/1798955-ridley-kanzo-adventure" target="_blank" rel="noopener">Im Bikemarkt öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße hat das Kanzo und welche Schaltgruppe ist verbaut? Bei passender Größe (S/XS) würde ich zeitnah 950 € bieten.')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-9')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="outlet" data-ts="1792762020" data-score="8.80">
@@ -419,9 +522,16 @@
             <span class="tag">Marktwert ~1500 €</span>
           </div>
           <div class="verdict">Werksgarantie direkt von Canyon für Rückläufer und Auslaufmodelle.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1299 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-10">Direkt beim Händler (1299 € Festpreis mit voller Herstellergarantie und 14-30 Tagen Rückgaberecht).</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.canyon.com/de-de/outlet-fahrraeder/gravel-bikes/" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-10')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="1792742040" data-score="8.80">
@@ -445,9 +555,16 @@
             <span class="tag">Marktwert ~850 €</span>
           </div>
           <div class="verdict">Brutaler Preis für Carbon-Cyclocrosser mit Ultegra Disc in passender Größe S.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 550 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-11">Hallo, handelt es sich um den Carbon-Rahmen und sind hydraulische Scheibenbremsen verbaut? Wenn technisch alles einwandfrei ist, würde ich das Rad zeitnah für 550 € abholen.</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/focus-mares-cyclocross-rad-groesse-s-ultegra-dt-swiss/3548341989-217-1889" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, handelt es sich um den Carbon-Rahmen und sind hydraulische Scheibenbremsen verbaut? Wenn technisch alles einwandfrei ist, würde ich das Rad zeitnah für 550 € abholen.')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-11')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="1792481400" data-score="8.80">
@@ -471,9 +588,16 @@
             <span class="tag">Marktwert ~680 €</span>
           </div>
           <div class="verdict">Topstone in Größe S zum Schleuderpreis: Perfekter Pendel-Einstieg für 168 cm.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 480 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-12">Hallo, ist das Topstone noch da und sturzfrei? Wenn technisch alles einwandfrei läuft, würde ich es für 480 € zeitnah in Taunusstein abholen. Passt das für Sie? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-3/3539006797-217-4921" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist das Topstone noch da und sturzfrei? Wenn technisch alles einwandfrei läuft, würde ich es für 480 € zeitnah in Taunusstein abholen. Passt das für Sie? Viele Grüße!')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-12')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="1792481400" data-score="8.30">
@@ -497,9 +621,16 @@
             <span class="tag">Marktwert ~1750 €</span>
           </div>
           <div class="verdict">Topaktueller Carbon-Graveler mit 12-fach GRX, perfekte Größe für 168 cm.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1500 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-13">Hallo, schönes Revolt! Handelt es sich um ein Neufahrrad und gibt es Originalfotos sowie eine Rechnung? Für 1.500 € würde ich es zeitnah abholen.</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-2-solar-flare-small/3516061588-217-8264" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, schönes Revolt! Handelt es sich um ein Neufahrrad und gibt es Originalfotos sowie eine Rechnung? Für 1.500 € würde ich es zeitnah abholen.')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-13')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="outlet" data-ts="1792481400" data-score="8.00">
@@ -523,9 +654,16 @@
             <span class="tag">Marktwert ~330 €</span>
           </div>
           <div class="verdict">Perfekter Low-Budget-Pendler mit Scheibenbremsen; Schuhgröße 40 deutet auf passendes S/XS hin.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 240 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-14">Hallo, welche Rahmengröße steht auf dem Aufkleber am Sitzrohr? Falls es XS oder S ist, würde ich es zeitnah für 240 € abholen kommen.</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/rennrad-triban-decathlon/3545906856-217-5421" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, welche Rahmengröße steht auf dem Aufkleber am Sitzrohr? Falls es XS oder S ist, würde ich es zeitnah für 240 € abholen kommen.')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-14')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="9.20">
@@ -549,9 +687,16 @@
             <span class="tag">Marktwert ~1300 €</span>
           </div>
           <div class="verdict">Perfektes Pendel-Setup: Neuware, Nabendynamo, Schutzbleche, 45mm Reifen und Rahmengröße S.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-15">Hallo! Ich habe Interesse an dem Ghost Asket EQ in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1200 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/ghost-asket-eq-gravel-bike-2026-rh-s-calm-oasis-midnight-teal/3491342221-217-4814" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-15')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="8.80">
@@ -575,9 +720,16 @@
             <span class="tag">Marktwert ~1100 €</span>
           </div>
           <div class="verdict">Perfekter Pendler-Vollausstatter mit Licht und Schutzblechen in passender Größe S.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1050 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-16">Hallo! Ich habe großes Interesse an dem Cube Nuroad Race FE 2023 in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 1050 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/nuroad-race-fe-2023-65492" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-16')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.80">
@@ -601,9 +753,16 @@
             <span class="tag">Marktwert ~1750 €</span>
           </div>
           <div class="verdict">Neues Händler-Gravel mit GRX 1x12, perfekte Geometrie und direkt um die Ecke.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1600 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-17">Hallo! Ich habe Interesse an dem Ridley Kanzo Adventure GRX 800 in Größe XS. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1600 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/gravelbike-ridley-kanzo-adventure-2026-gr-xs/3492806066-217-4285" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-17')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.80">
@@ -627,9 +786,16 @@
             <span class="tag">Marktwert ~1850 €</span>
           </div>
           <div class="verdict">High-End Carbon-Gravel mit GRX 12-fach direkt vor Ort in Weiterstadt.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1700 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-18">Hallo! Schönes Rose Backroad Carbon GRX RX820 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1700 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/rose-bikes-gravel-24-backroad-grx-rx820-1x12-2540012652-2025-koerpergroesse-170-179-cm-rh-47-cm-shimano-grx-12-gaenge/3535214867-217-4516" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-18')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -653,9 +819,16 @@
             <span class="tag">Marktwert ~900 €</span>
           </div>
           <div class="verdict">Quasi neu, direkt neben Groß-Umstadt: Top-Chance, wenn Größe 47/51 passt!</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 800 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-19">Hallo! Schönes BMC Roadmachine X AL Two in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 800 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bmc-roadmaschine-al-x-two-gravel-bike-wie-neu/3547632624-217-19542" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-19')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -679,9 +852,16 @@
             <span class="tag">Marktwert ~1150 €</span>
           </div>
           <div class="verdict">Perfekte XS-Geometrie, leichter Carbon-Allrounder mit hydraulischer GRX für jedes Pendelwetter.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1050 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-20">Hallo! Schönes Cube Nuroad C:62 Pro in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1050 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-2023-gravelbike-carbon-xs-shimano-grx/3549489591-217-1950" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-20')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -705,9 +885,16 @@
             <span class="tag">Marktwert ~1250 €</span>
           </div>
           <div class="verdict">Perfekter Carbon-Pendler in Größe S mit Schutzblechen, Träger und Gewährleistung.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1180 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-21">Hallo! Ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1180 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168/3549118635-217-1207" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-21')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -731,9 +918,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Perfekter Carbon-Pendler mit Schutzblechen, Träger, GRX und passender Größe S.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-22">Hallo! Ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1200 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549127563-217-16773" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-22')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -757,9 +951,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Top Pendler-Paket: Carbon, GRX, Händlergarantie, passende Größe S und bereits voll ausgestattet.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-23">Hallo! Ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1200 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549121633-217-1778" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-23')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -783,9 +984,16 @@
             <span class="tag">Marktwert ~1250 €</span>
           </div>
           <div class="verdict">Perfekter Pendler-Traum: Carbon, Schutzbleche, Gepäckträger, Größe S und Händlergarantie.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-24">Hallo! Ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1200 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549123074-217-990" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-24')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -809,9 +1017,16 @@
             <span class="tag">Marktwert ~1250 €</span>
           </div>
           <div class="verdict">Perfektes Pendler-Paket: Carbon, Größe S, Schutzbleche montiert und 1 Jahr Händlergarantie.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-25">Hallo! Ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1200 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549120451-217-1050" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-25')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -835,9 +1050,16 @@
             <span class="tag">Marktwert ~1300 €</span>
           </div>
           <div class="verdict">Perfekte Größe, Carbon, Pendler-Ausstattung montiert – solider Allwetter-Deal mit Verhandlungsspielraum.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-26">Hallo! Schönes Cube Nuroad C:62 Pro in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1200 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-gravel-bike-2022/3539939603-217-4847" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-26')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -861,9 +1083,16 @@
             <span class="tag">Marktwert ~1300 €</span>
           </div>
           <div class="verdict">Perfekte Größe, moderne 12-fach GRX und massive Reifenfreiheit fürs Ganzjahres-Pendeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1250 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-27">Hallo! Schönes Canyon Grizl 7 in Größe XS. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1250 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-7-raw-rahmengroesse-xs/3545883574-217-4245" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-27')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -887,9 +1116,16 @@
             <span class="tag">Marktwert ~1650 €</span>
           </div>
           <div class="verdict">Top Carbon-Graveler mit GRX 800 und DT Swiss, passende Größe S.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1400 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-28">Hallo! Schönes Canyon Grizl CF SL 8 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1400 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl8-gravel-bike-matcha-groesse-s/3528206322-217-4971" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-28')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -913,9 +1149,16 @@
             <span class="tag">Marktwert ~1850 €</span>
           </div>
           <div class="verdict">Perfekte Größe S, Vollcarbon plus Newmen Carbon-Laufräder: Starker Pendel-Sportler.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1550 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-29">Hallo! Schönes Cube Nuroad C:62 (mit Newmen Carbon LRS) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1550 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c62-2026/3546157646-217-4885" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-29')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
@@ -939,9 +1182,16 @@
             <span class="tag">Marktwert ~1900 €</span>
           </div>
           <div class="verdict">Top Carbon-Renner mit Di2, Leeze-Carbonrädern und Schutzblechen; zickendes Schaltwerk drückt den Preis.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1650 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-30">Hallo! Schönes Canyon Grail CF SL (2023) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1650 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-groesse-s-sandfarben/3532386865-217-5126" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-30')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.50">
@@ -965,9 +1215,16 @@
             <span class="tag">Marktwert ~1450 €</span>
           </div>
           <div class="verdict">Perfekte Passform für 168 cm, Top-Ausstattung und direkt in Abholnähe.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1400 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-31">Hallo! Schönes Canyon Grail CF SL 8 in Größe XS. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1400 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8/3521336300-217-4285" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-31')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
@@ -991,9 +1248,16 @@
             <span class="tag">Marktwert ~500 €</span>
           </div>
           <div class="verdict">Perfekte Größe S, Schutzbleche dran: unschlagbar günstiges Winter-Pendelrad ohne Schnickschnack.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 420 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-32">Hallo! Schönes Cube Nuroad in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 420 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-gravelbike-groesse-s/3550091211-217-1733" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-32')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
@@ -1017,9 +1281,16 @@
             <span class="tag">Marktwert ~850 €</span>
           </div>
           <div class="verdict">Perfekte Geometrie für 168 cm, hydraulische Ultegra und frischer Service.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 750 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-33">Hallo! Schönes Norco Threshold AL Custom in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 750 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/norco-threshold-al-gravel-rh-48-custom-edition/3539339932-217-5969" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-33')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
@@ -1043,9 +1314,16 @@
             <span class="tag">Marktwert ~850 €</span>
           </div>
           <div class="verdict">Perfekte Größe S für 168 cm, solide SRAM-Hydraulik und schneller Mainz-Abholweg.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 800 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-34">Hallo! Schönes Canyon Inflite AL SLX in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 800 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cyclocross-gravel-canyon-inflite-al-slx-s-fahrrad/3525645202-217-5324" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-34')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
@@ -1069,9 +1347,16 @@
             <span class="tag">Marktwert ~950 €</span>
           </div>
           <div class="verdict">Neuwertiges Grizl mit 54mm Reifenfreiheit; Rahmengröße zwingend auf XS/S prüfen.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 850 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-35">Hallo! Schönes Canyon Grizl 5 (Cues) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 850 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-5-gravel-/3551804055-217-20812" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-35')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
@@ -1095,9 +1380,16 @@
             <span class="tag">Marktwert ~1250 €</span>
           </div>
           <div class="verdict">Perfektes Pendler-Setup in passender Größe S: Carbon, Schutzbleche, Gepäckträger und Händlergarantie.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1150 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-36">Hallo! Ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1150 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549124299-217-1987" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-36')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="8.40">
@@ -1121,9 +1413,16 @@
             <span class="tag">Marktwert ~1250 €</span>
           </div>
           <div class="verdict">Perfekte Pendler-Geometrie in XS, hydr. GRX und Ösen für Ganzjahreseinsatz.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1180 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-37">Hallo! Ich habe großes Interesse an dem Cannondale Topstone 1 in passender Größe XS. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 1180 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/topstone-1-2026-18345" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-37')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
@@ -1147,9 +1446,16 @@
             <span class="tag">Marktwert ~1250 €</span>
           </div>
           <div class="verdict">Perfekte Größe, Future Shock und bereits voll pendelfertig mit Schutzblechen und Träger.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1180 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-38">Hallo! Schönes Specialized Diverge Comp E5 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1180 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/gravelbike-damen-specialized-diverge-comp-e5-groesse-49/3486104675-217-4548" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-38')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
@@ -1173,9 +1479,16 @@
             <span class="tag">Marktwert ~1299 €</span>
           </div>
           <div class="verdict">Fabrikneu mit modernster 1x12 GRX, 45mm Reifenfreiheit und passender Größe S.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-39">Hallo! Ich habe Interesse an dem Cube Nuroad EX in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1200 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ex-neu-mj2027-gr-s-m/3521782415-217-7260" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-39')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
@@ -1199,9 +1512,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Perfekter Pendler mit Carbonrahmen, Schutzblechen, Gepäckträger und 12 Monaten Händlergarantie.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-40">Hallo! Ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1200 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-store-koeln-bio-bikes-/3550047414-217-984" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-40')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="8.40">
@@ -1225,9 +1545,16 @@
             <span class="tag">Marktwert ~1450 €</span>
           </div>
           <div class="verdict">Moderner Carbon-Graveler in passender Größe, perfekt für 26 km Pendelstrecke.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1400 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-41">Hallo! Ich habe großes Interesse an dem Cube Nuroad C:62 Pro (2023) in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 1400 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/nuroad-c62-pro-2023-34187" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-41')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="bikemarkt" data-ts="0" data-score="8.40">
@@ -1251,9 +1578,16 @@
             <span class="tag">Marktwert ~1700 €</span>
           </div>
           <div class="verdict">Topaktueller Carbon-Graveler mit 50mm Reifenfreiheit; Rahmengröße muss zwingend XS/S sein.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1550 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-42">Hallo! Schönes Cube Nuroad C:62 Pro (2025) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1550 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://bikemarkt.mtb-news.de/article/1802287-cube-nuroad-c-62-pro-carbon-2025-1x12-oder-2x12-grx-820" target="_blank" rel="noopener">Im Bikemarkt öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-42')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.30">
@@ -1277,9 +1611,16 @@
             <span class="tag">Marktwert ~650 €</span>
           </div>
           <div class="verdict">Perfekte Pendler-Größe XS, modern mit Microshift Sword und praktisch neuwertig.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 580 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-43">Hallo! Schönes Triban GRVL AF in Größe XS. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 580 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/triban-grvl-af-gravelbike-microshift-sword-1x10-pink/3537323208-217-7698" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-43')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.30">
@@ -1303,9 +1644,16 @@
             <span class="tag">Marktwert ~750 €</span>
           </div>
           <div class="verdict">Top Zustand, perfekte XS-Geometrie und direkt um die Ecke in Mühltal.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 680 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-44">Hallo! Schönes Cube Attain Race Disc in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 680 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-attain-race-xs-rennrad-farbe-lilac-modell-2026/3551204737-217-4447" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-44')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.30">
@@ -1329,9 +1677,16 @@
             <span class="tag">Marktwert ~1050 €</span>
           </div>
           <div class="verdict">Perfekte 51er Geometrie für 168 cm, neuwertige GRX 11-fach Ausstattung.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 980 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-45">Hallo! Schönes Bulls Grinder 4 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 980 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bulls-grinder-4-gra-gravel-bike-wie-neu-/3525111522-217-8267" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-45')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.30">
@@ -1355,9 +1710,16 @@
             <span class="tag">Marktwert ~1400 €</span>
           </div>
           <div class="verdict">Top Carbon-Graveler mit 50mm Reifenfreiheit; Rahmengröße vorab zwingend klären!</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1150 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-46">Hallo! Schönes Canyon Grizl CF SL 8 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1150 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl-8-carbon-gravelbike/3549193631-217-4675" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-46')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="8.20">
@@ -1381,9 +1743,16 @@
             <span class="tag">Marktwert ~980 €</span>
           </div>
           <div class="verdict">Perfekte Größe S, hydraulische GRX und voll wintertauglich für 26 km Pendeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 900 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-47">Hallo! Ich habe großes Interesse an dem Cannondale Topstone 2 (2023) in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 900 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/topstone-2-2023-25535" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-47')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.20">
@@ -1407,9 +1776,16 @@
             <span class="tag">Marktwert ~980 €</span>
           </div>
           <div class="verdict">Perfekte Pendler-Geometrie in Größe S mit zuverlässiger GRX 2x11-Hydraulik.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 900 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-48">Hallo! Schönes Cube Nuroad Race (2023) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 900 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-race-groesse-s-shimano-grx-600/3542823594-217-16309" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-48')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1433,9 +1809,16 @@
             <span class="tag">Marktwert ~30 €</span>
           </div>
           <div class="verdict">Der Insider-Tipp: Unbenutzter Firmen-Sturmschirm für unter 10 € mit Gratis-Versand.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 8 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-49">Hallo! Schönes Fare Windfighter Carbon/Fiberglas in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 8 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-regenschirm-schwarz-sturmfest/k0" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-49')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1459,9 +1842,16 @@
             <span class="tag">Marktwert ~30 €</span>
           </div>
           <div class="verdict">Maximaler Budget-Cheat: Zwei schlichte schwarze Schirme für 10 € inklusive Versand.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 10 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-50">Hallo! Schönes 2x Schwarze Automatik-Schirme (Set) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 10 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-regenschirm-konvolut-schwarz/k0" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-50')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1485,9 +1875,16 @@
             <span class="tag">Marktwert ~45 €</span>
           </div>
           <div class="verdict">Moderner High-Tech-Taschenschirm: Kein Holz, keine Blumen, Auf-Zu per Knopfdruck.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 12 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-51">Hallo! Schönes Knirps T.200 Duomatic Schwarz in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 12 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-knirps-t200-schwarz/k0" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-51')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="outlet" data-ts="0" data-score="8.00">
@@ -1511,9 +1908,16 @@
             <span class="tag">Marktwert ~35 €</span>
           </div>
           <div class="verdict">Der Preisbrecher: Tiefschwarz, für offene Golfplatz-Stürme gebaut, bricht nicht.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 15 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-52">Direkt beim Händler (15 € Festpreis mit voller Herstellergarantie und 14-30 Tagen Rückgaberecht).</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.decathlon.de/p/golfschirm-profilter-small-125-cm/_/R-p-144211" target="_blank" rel="noopener">Zum Shop / Angebot ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-52')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1537,9 +1941,16 @@
             <span class="tag">Marktwert ~500 €</span>
           </div>
           <div class="verdict">Perfekte Größe, Schutzbleche montiert; Achter im Hinterrad drückt den Preis massiv.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 450 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-53">Hallo! Schönes Focus Mares AX in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 450 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-gravel-bike-inkl-strassenreifen/3542806674-217-18470" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-53')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1563,9 +1974,16 @@
             <span class="tag">Marktwert ~620 €</span>
           </div>
           <div class="verdict">Perfekte Größe RH47 mit Schutzblechen und Gepäckträger – idealer Pendler zum fairen Kurs.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 550 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-54">Hallo! Schönes Cube Nuroad (FE) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 550 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/rennrad-cube-nuroad-rh47-cyclocross-gravelbike/3540956038-217-9590" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-54')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1589,9 +2007,16 @@
             <span class="tag">Marktwert ~750 €</span>
           </div>
           <div class="verdict">Perfektes Winter-Pendelrad mit Vollausstattung; Rahmengröße zwingend vor Ort prüfen.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 680 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-55">Hallo! Schönes Cube Nuroad Pro FE in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 680 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-fast-neu-nur-50-km/3551136447-217-7251" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-55')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="8.00">
@@ -1615,9 +2040,16 @@
             <span class="tag">Marktwert ~1050 €</span>
           </div>
           <div class="verdict">Perfekte Größe S, moderne GRX-Ausstattung und massive Reifenfreiheit für Matschpendeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1000 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-56">Hallo! Ich habe großes Interesse an dem Cube Nuroad EX 2024 in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 1000 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/nuroad-ex-2024-31800" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-56')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1641,9 +2073,16 @@
             <span class="tag">Marktwert ~1200 €</span>
           </div>
           <div class="verdict">Carbon-Gravel mit Schutzblechen und GRX in Größe S: Perfekter Pendler!</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1150 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-57">Hallo! Ich habe Interesse an dem Cube Nuroad WS C:62 Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1150 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549111504-217-1767" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-57')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1667,9 +2106,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Perfekte Geometrie, modernste 12-fach GRX, Schutzblechösen und 45mm Reifen – Preis verhandeln!</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1250 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-58">Hallo! Schönes Canyon Grizl 7 2x12 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1250 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-7-affogato-in-xs-gravelbike/3551205070-217-4662" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-58')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1693,9 +2139,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Neues Händlerrad im Räumungsverkauf: Perfekte Geometrie für 168 cm und Ganzjahres-Pendeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1350 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-59">Hallo! Ich habe Interesse an dem Ridley Kanzo A GRX400 in Größe XS. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1350 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/gravelbike-ridley-kanzo-adventure-2025-gr-xs/3492309391-217-4285" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-59')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1719,9 +2172,16 @@
             <span class="tag">Marktwert ~1550 €</span>
           </div>
           <div class="verdict">Perfekte Größe, 45mm Reifen, 12-fach GRX und Händlergarantie direkt um die Ecke.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1500 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-60">Hallo! Ich habe Interesse an dem Stevens Gavere Com (2024) in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1500 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/stevens-gavere-com-shimano-grx-820-violett/3442362116-217-4509" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-60')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1745,9 +2205,16 @@
             <span class="tag">Marktwert ~1650 €</span>
           </div>
           <div class="verdict">Topaktuelles 2024er Carbon-Gravelbike in passender Größe XS direkt in Frankfurt mit Gewährleistung.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1589 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-61">Hallo! Ich habe Interesse an dem Orbea Terra M30Team Carbon (2024) in Größe XS. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1589 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/orbea-terra-m30team-gravelbike-carbon-2024/3443681402-217-16314" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-61')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
@@ -1771,9 +2238,16 @@
             <span class="tag">Marktwert ~1800 €</span>
           </div>
           <div class="verdict">Edles Carbon-Gravel mit Future Shock, RH 52 passt, zäh auf 1.750 € verhandeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1750 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-62">Hallo! Schönes Specialized Diverge Sport Carbon in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1750 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/specialized-diverge-sport-carbon-2025-koerpergroesse-170-179-cm-rh-52-cm-shimano-grx-rx820-24-gaenge/3542256542-217-4516" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-62')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
@@ -1797,9 +2271,16 @@
             <span class="tag">Marktwert ~800 €</span>
           </div>
           <div class="verdict">Perfekte Größe 48cm, hydraulische Ultegra und 40mm Reifenbreite für den Commute.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 750 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-63">Hallo! Schönes Norco Threshold AL in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 750 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/norco-threshold-gravel-mit-topausstattung-rh-48cm/3539339932-217-5969" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-63')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
@@ -1823,9 +2304,16 @@
             <span class="tag">Marktwert ~900 €</span>
           </div>
           <div class="verdict">Achtung: Ridley S fällt groß aus (eher ab 172 cm) – erst probesitzen!</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 820 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-64">Hallo! Schönes Ridley X-Trail Carbon in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 820 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/ridley-x-trail-carbon-gravel-bike-shimano-105-disc-top-zustan/3547689999-217-4504" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-64')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
@@ -1849,9 +2337,16 @@
             <span class="tag">Marktwert ~1050 €</span>
           </div>
           <div class="verdict">Achtung: Ridley S fällt groß aus (eher ab 172 cm) – erst probesitzen!</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 850 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-65">Hallo! Schönes Ridley Kanzo A GRX 2x12 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 850 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/ridley-kanzo-a-gravelbike-grx/3551224063-217-4891" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-65')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
@@ -1875,9 +2370,16 @@
             <span class="tag">Marktwert ~1150 €</span>
           </div>
           <div class="verdict">Topstone Carbon mit Kingpin-Federung in passender Größe SM, fairer VB-Preis.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1050 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-66">Hallo! Schönes Cannondale Topstone Carbon Apex 1 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1050 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-gravel-bike-carbon/3514076800-217-196" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-66')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
@@ -1901,9 +2403,16 @@
             <span class="tag">Marktwert ~1300 €</span>
           </div>
           <div class="verdict">Top Carbon-Graveler in perfekter Größe S mit frischem Antriebsservice.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-67">Hallo! Schönes Conway GRV 10.0 Carbon in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1200 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/gravel-bike/3534073698-217-17566" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-67')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
@@ -1927,9 +2436,16 @@
             <span class="tag">Marktwert ~1450 €</span>
           </div>
           <div class="verdict">Perfekte Geometrie für 168 cm, Carbonrahmen, aber echte Fotos und Rechnung einfordern.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1350 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-68">Hallo! Ich habe Interesse an dem Giant Revolt Advanced 3 in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1350 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-3-28-zoll-diamant-rh-s/3516078741-217-8264" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-68')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.90">
@@ -1953,9 +2469,16 @@
             <span class="tag">Marktwert ~1700 €</span>
           </div>
           <div class="verdict">Edler Carbon-Graveler mit 47 mm Reifenfreiheit; Schutzbleche gehen nur per Clip-on.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1600 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-69">Hallo! Ich habe großes Interesse an dem Specialized Crux Comp (2022) in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 1600 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/crux-comp-2022-36755" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-69')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
@@ -1979,9 +2502,16 @@
             <span class="tag">Marktwert ~1750 €</span>
           </div>
           <div class="verdict">Achtung: Ridley S fällt groß aus (eher ab 172 cm) – erst probesitzen!</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1600 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-70">Hallo! Ich habe Interesse an dem Ridley Kanzo Adventure in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1600 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/gravelbike-ridley-kanzo-adventure-2026-gr-s/3492026466-217-4285" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-70')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2005,9 +2535,16 @@
             <span class="tag">Marktwert ~520 €</span>
           </div>
           <div class="verdict">Top Pendler-Basis mit Gepäckträger; Größe und Defekte vorab zwingend klären.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 390 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-71">Hallo! Schönes Cube Nuroad Pro FE (2021) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 390 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-2021-gravel-bike-schwarz/3551708115-217-2164" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-71')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2031,9 +2568,16 @@
             <span class="tag">Marktwert ~580 €</span>
           </div>
           <div class="verdict">Perfekte 49cm-Größe für 168cm, frischer Antrieb, solider Allwetter-Pendler mit Schutzblech-Ösen.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 540 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-72">Hallo! Schönes Scott Contessa Speedster Gravel in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 540 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/contessa-speedster-gravelbike-rennrad-49cm-28-zoll/3547524730-217-7979" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-72')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2057,9 +2601,16 @@
             <span class="tag">Marktwert ~600 €</span>
           </div>
           <div class="verdict">Perfekter Ganzjahres-Pendler mit Schutzblechen und Licht, Claris-Schaltung drückt den Marktwert.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 550 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-73">Hallo! Schönes Bulls Daily Grinder 1 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 550 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bulls-daily-grinder-1-51cm-gravel-bike-ca-300km-gefahren/3549058828-217-964" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-73')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2083,9 +2634,16 @@
             <span class="tag">Marktwert ~600 €</span>
           </div>
           <div class="verdict">Perfekte 49er Rahmenhöhe, frischer Antrieb, aber mechanische Bremsen drücken den Wert.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 550 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-74">Hallo! Schönes Scott Contessa Speedster Gravel in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 550 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/scott-contessa-speedster-gravelbike-rennrad-49-cm-28-zoll/3547521016-217-5195" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-74')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2109,9 +2667,16 @@
             <span class="tag">Marktwert ~700 €</span>
           </div>
           <div class="verdict">Perfekt ausgestatteter Ganzjahres-Commuter in passender Größe S, Claris drückt den Preis.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 650 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-75">Hallo! Schönes Bergamont Grandurance RD 3 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 650 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bergamont-grandurance-rd-3-2024-sehr-gepflegt-unter-1-000-km/3547772708-217-1738" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-75')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2135,9 +2700,16 @@
             <span class="tag">Marktwert ~720 €</span>
           </div>
           <div class="verdict">Perfekte Größe XS, quasi neuwertig, aber mechanische Scheibenbremsen drücken den Wert.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 680 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-76">Hallo! Schönes Cube Nuroad Pro (2023/24) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 680 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-gravelbike-50cm-grey-modell-680100/3549586956-217-5219" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-76')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2161,9 +2733,16 @@
             <span class="tag">Marktwert ~750 €</span>
           </div>
           <div class="verdict">Perfekte Größe S, hydraulische Bremsen und Steckachsen – idealer Commuter mit Verhandlungsspielraum.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 700 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-77">Hallo! Schönes Cannondale Topstone Tiagra Alloy (2020) in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 700 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-alloy-gr-s/3504095671-217-4843" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-77')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.80">
@@ -2187,9 +2766,16 @@
             <span class="tag">Marktwert ~850 €</span>
           </div>
           <div class="verdict">Perfekte Größe XS, modernes Allwetter-Gravelbike mit solider Ausstattung zum fairen Kurs.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 850 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-78">Hallo! Ich habe großes Interesse an dem Megamo Jakar Apex (2023) in passender Größe XS. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 850 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/jakar-sram-apex-2023-69637" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-78')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2213,9 +2799,16 @@
             <span class="tag">Marktwert ~980 €</span>
           </div>
           <div class="verdict">Neuwertiges Allwetter-Gravelbike mit 50mm Reifenfreiheit, perfekt fürs Pendeln, Preis verhandeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 900 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-79">Hallo! Schönes Canyon Grizl 5 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 900 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-5/3545668319-217-2000" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-79')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.80">
@@ -2239,9 +2832,16 @@
             <span class="tag">Marktwert ~1050 €</span>
           </div>
           <div class="verdict">Perfekte Größe 52, Future Shock und hohe Reifenfreiheit für den Winter-Commute.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 980 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-80">Hallo! Ich habe großes Interesse an dem Specialized Diverge Comp E5 in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 980 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/diverge-comp-e5-2022-56139" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-80')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2265,9 +2865,16 @@
             <span class="tag">Marktwert ~1050 €</span>
           </div>
           <div class="verdict">Perfekte Rahmenhöhe und direkt vor Ort, aber sportliche CX-Geometrie und Rennradreifen.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1050 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-81">Hallo! Schönes Stevens Vapor Disc (2023) in Größe S / 50 cm. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1050 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/stevens-vapor-1-11-2023-koerpergroesse-160-169-cm-rh-50-cm-shimano-grx-11-gaenge/3550117961-217-4516" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-81')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="bikemarkt" data-ts="0" data-score="7.80">
@@ -2291,9 +2898,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Starkes Carbon-Gravelbike; Rahmengröße XS oder S muss zwingend geklärt werden.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1200 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-82">Hallo! Schönes Canyon Grail CF SL 7 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1200 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://bikemarkt.mtb-news.de/article/1802033-canyon-grail-cf-sl-7-carbon" target="_blank" rel="noopener">Im Bikemarkt öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-82')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2317,9 +2931,16 @@
             <span class="tag">Marktwert ~1300 €</span>
           </div>
           <div class="verdict">Neues Händlerrad mit GRX 812 in perfekter Größe für 26 km Pendeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1250 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-83">Hallo! Ich habe Interesse an dem SUNN Venture S1 in Größe S / 50 cm. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1250 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/sunn-venture-s1-gravel-bike-groesse-50cm-neu/3173522150-217-4712" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-83')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2343,9 +2964,16 @@
             <span class="tag">Marktwert ~1400 €</span>
           </div>
           <div class="verdict">Neuwertiges Carbon-Gravel in passender Größe S – Preis auf 1.350 € drücken.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1350 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-84">Hallo! Schönes Cube Nuroad C:62 Pro in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1350 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro/3538538895-217-19614" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-84')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.80">
@@ -2369,9 +2997,16 @@
             <span class="tag">Marktwert ~1500 €</span>
           </div>
           <div class="verdict">Top Pendel-Gravel mit 50mm Reifenfreiheit und Campagnolo Ekar 13-fach.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1450 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-85">Hallo! Ich habe großes Interesse an dem Canyon Grizl 8 1by Ekar in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 1450 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/grizl-8-1by-ekar-2023-39378" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-85')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2395,9 +3030,16 @@
             <span class="tag">Marktwert ~1500 €</span>
           </div>
           <div class="verdict">Perfekt ausgestatteter Neuer Commuter mit Licht und Blechen direkt in Darmstadt.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1450 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-86">Hallo! Ich habe Interesse an dem Corratec Allroad Travel EQ in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1450 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/corratec-allroad-travel-eq-gravel-pendel-commuter-bikepacking-/3491533323-217-4891" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-86')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2421,9 +3063,16 @@
             <span class="tag">Marktwert ~1550 €</span>
           </div>
           <div class="verdict">Perfekte Lage, neuerer Rahmen; anstehender Antriebstausch bietet beste Verhandlungsbasis.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1450 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-87">Hallo! Schönes Canyon Grail CF SL 8 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1450 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8-2022-gravel-bike-sand-gr-s/3538124427-217-4890" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-87')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
@@ -2447,9 +3096,16 @@
             <span class="tag">Marktwert ~1750 €</span>
           </div>
           <div class="verdict">Perfekte Größe für 168 cm, edler Carbon-Graveler, per VB unter Budgetgrenze verhandelbar.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1650 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-88">Hallo! Schönes Canyon Grizl CF SL 8 1by Ekar in Größe XS. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1650 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl8-1by-ekar-2022-in-xs/3517176417-217-5420" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-88')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.70">
@@ -2473,9 +3129,16 @@
             <span class="tag">Marktwert ~1250 €</span>
           </div>
           <div class="verdict">Achtung: Ridley S fällt groß aus! Starkes Carbon-Allroad mit Ultegra Disc.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1150 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-89">Hallo! Schönes Ridley Kanzo Speed C Disc in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1150 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/ridley-kanzo-speed-c-ultegra-hd-s-black-belgian-blue/3523598053-217-16309" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-89')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.50">
@@ -2499,9 +3162,16 @@
             <span class="tag">Marktwert ~900 €</span>
           </div>
           <div class="verdict">Achtung: Ridley/Canyon S fällt groß aus! Neuwertiges Allroad-Gravelbike mit hydraulischer GRX.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 820 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-90">Hallo! Schönes Ridley Grifn A Disc GRX in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 820 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/gravelbike-ridley-grifn-a-groesse-s/3531367244-217-4526" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-90')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.40">
@@ -2525,9 +3195,16 @@
             <span class="tag">Marktwert ~550 €</span>
           </div>
           <div class="verdict">Perfektes Allwetter-Pendlerpaket mit Nabendynamo, aber Claris-Ausstattung drückt den realen Marktwert.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 520 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-91">Hallo! Schönes Bulls Daily Grinder 1 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 520 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bulls-daily-grinder-1-gravel-bike-ca-300km-gefahren/3549058828-217-964" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-91')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.40">
@@ -2551,9 +3228,16 @@
             <span class="tag">Marktwert ~700 €</span>
           </div>
           <div class="verdict">Perfekte Pendler-Geometrie für 168 cm, mechanische Bremsen drücken jedoch den Marktwert.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 680 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-92">Hallo! Ich habe großes Interesse an dem Cube Nuroad Pro (2022) in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 680 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/nuroad-pro-2022-12482" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-92')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.40">
@@ -2577,9 +3261,16 @@
             <span class="tag">Marktwert ~780 €</span>
           </div>
           <div class="verdict">Perfekte Größe S fürs Pendeln, aber genaue Schaltgruppe vorab klären.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 720 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-93">Hallo! Ich habe großes Interesse an dem Cannondale Topstone Alloy in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 720 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/topstone-other-78676" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-93')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.40">
@@ -2603,9 +3294,16 @@
             <span class="tag">Marktwert ~900 €</span>
           </div>
           <div class="verdict">Neuwertiger Cyclocrosser direkt vor der Haustür, Größe S passt, Preis Verhandlungssache.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 850 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-94">Hallo! Schönes Canyon Inflite AL SLX 6.0 Race in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 850 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-inflite-al-slx-6-0-race-cyclocross-rad-groesse-s/3537920383-217-4358" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-94')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.40">
@@ -2629,9 +3327,16 @@
             <span class="tag">Marktwert ~1100 €</span>
           </div>
           <div class="verdict">Neuwertiges Gravelbike mit GRX-Hydraulik und Ösen, Rahmengröße S passt perfekt.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1050 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-95">Hallo! Ich habe Interesse an dem Bulls Grinder 3 in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1050 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/gravelbike-bulls-grinder-3-sonderpeis-versand-moeglich-/3520072137-217-17426" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-95')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.40">
@@ -2655,9 +3360,16 @@
             <span class="tag">Marktwert ~1400 €</span>
           </div>
           <div class="verdict">Neues Händler-Gravel in Darmstadt: GRX 2x11, Garantie, Rahmengröße S vor Ort verfügbar.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1350 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-96">Hallo! Ich habe Interesse an dem Raymon Territ Pro in Größe S. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1350 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/raymon-territ-pro-gravel-shimano-grx-/3491542894-217-4891" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-96')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.30">
@@ -2681,9 +3393,16 @@
             <span class="tag">Marktwert ~500 €</span>
           </div>
           <div class="verdict">Perfekt ausgestatteter Ganzjahres-Pendler; Rahmengröße zwingend klären und auf 450 € drücken.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 450 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-97">Hallo! Schönes Bulls Daily Grinder 1 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 450 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bulls-daily-grinder-1-gravelbike-shimano-claris-16-gang/3491884446-217-15243" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-97')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.30">
@@ -2707,9 +3426,16 @@
             <span class="tag">Marktwert ~1200 €</span>
           </div>
           <div class="verdict">Perfekt fürs Winterpendeln: Moderner Allrounder mit Riesen-Reifenfreiheit in passender Größe S.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1150 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-98">Hallo! Ich habe großes Interesse an dem Canyon Grizl 6 1by in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 1150 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/grizl-6-1by-2024-82631" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-98')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.30">
@@ -2733,9 +3459,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Starkes Carbon-Gravelbike mit FutureShock, aber Rahmengröße muss zwingend geklärt werden.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1150 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-99">Hallo! Schönes Specialized Diverge Sport Carbon in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1150 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/specialized-diverge-carbon-gravelbike/3506977175-217-8259" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-99')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.30">
@@ -2759,9 +3492,16 @@
             <span class="tag">Marktwert ~1650 €</span>
           </div>
           <div class="verdict">Edler Carbon-Graveler, aber Doppeldecker-Lenker schränkt ein; hart auf 1.550 € verhandeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1550 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-100">Hallo! Schönes Canyon Grail CF SL 7 in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1550 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-7/3547818380-217-4947" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-100')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.20">
@@ -2785,9 +3525,16 @@
             <span class="tag">Marktwert ~800 €</span>
           </div>
           <div class="verdict">Perfekte Größe und Ausstattung fürs Pendeln, Preis muss aber Richtung 800 €.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 780 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-101">Hallo! Ich habe großes Interesse an dem Cube Nuroad EX in passender Größe XS. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 780 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/nuroad-ex-2022-87943" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-101')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.20">
@@ -2811,9 +3558,16 @@
             <span class="tag">Marktwert ~1350 €</span>
           </div>
           <div class="verdict">Fabrikneues Gravelbike in perfekter XS-Größe; Cues solide, Händler-Rabatt für Nischengröße verhandeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1300 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-102">Hallo! Ich habe Interesse an dem Orbea Terra H45 in Größe XS. Ist das Rad technisch einwandfrei und sturzfrei? Ich könnte zeitnah zur Abholung für 1300 € vorbeikommen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/orbea-terra-h45-neu-2026-gravel-bike-gr-xs-diamond-black/3467049735-217-16323" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-102')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.20">
@@ -2837,9 +3591,16 @@
             <span class="tag">Marktwert ~1450 €</span>
           </div>
           <div class="verdict">Perfekte Geometrie für 168 cm; Hover-Lenker erschwert Pendler-Zubehör, Preis verhandeln.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1400 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-103">Hallo! Ich habe großes Interesse an dem Canyon Grail CF SL 8 in passender Größe XS. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 1400 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/grail-cf-sl-8-2021-18014" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-103')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.10">
@@ -2863,9 +3624,16 @@
             <span class="tag">Marktwert ~1300 €</span>
           </div>
           <div class="verdict">Neues Händler-Gravelbike: Top Pendler-Allrounder, passende Rahmengröße S/50cm zwingend anfragen.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 1250 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-104">Hallo! Schönes Bergamont Grandurance in Größe S. Da die Hauptsaison vorbei ist und der Markt aktuell stark abkühlt: Wären für Sie 1250 € bei schneller und unkomplizierter Abholung mit Barzahlung in Ordnung? Ist das Rad sturz- und rissfrei? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-anzeige/bergamont-grandurance-10-20-30-fahrrad-28-gravel-div-groessen/3390125591-217-3848" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-104')">📋 Vorlage kopieren</button>
           </div>
         </div>
         <div class="card" data-platform="buycycle" data-ts="0" data-score="7.00">
@@ -2889,9 +3657,16 @@
             <span class="tag">Marktwert ~580 €</span>
           </div>
           <div class="verdict">Perfekte Größe 49 cm, solider Budget-Custom-Graveler mit Sensah SRX 1x11.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Cheat-Code Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 530 €</span>
+            </div>
+            <div class="msg-text" id="gravel-msg-105">Hallo! Ich habe großes Interesse an dem Sodce Custom Gravel Sensah SRX in passender Größe S. Da die Hauptsaison vorbei ist: Würdest du einem Gegenangebot von 530 € über den Buycycle-Käuferschutz zustimmen? Ich würde den Kauf dann direkt abschließen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://buycycle.com/de-de/product/sodce-custom-48893" target="_blank" rel="noopener">Auf Buycycle prüfen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-105')">📋 Vorlage kopieren</button>
           </div>
         </div>
     </div>
@@ -2924,9 +3699,16 @@
             <span class="tag">Marktwert ~35 €</span>
           </div>
           <div class="verdict">Der Preisbrecher: Tiefschwarz, für offene Golfplatz-Stürme gebaut, bricht nicht.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Kauf-/Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 15 €</span>
+            </div>
+            <div class="msg-text" id="fast-msg-0">Direkt bei Decathlon bestellbar (14,99 € Neuware mit voller 2-Jahres-Garantie und Filialabholung).</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.decathlon.de/p/golfschirm-profilter-small-125-cm/_/R-p-144211" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, '')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'fast-msg-0')">📋 Vorlage kopieren</button>
             
           </div>
         </div>
@@ -2950,9 +3732,16 @@
             <span class="tag">Marktwert ~45 €</span>
           </div>
           <div class="verdict">Moderner High-Tech-Taschenschirm: Kein Holz, keine Blumen, Auf-Zu per Knopfdruck.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Kauf-/Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 12 €</span>
+            </div>
+            <div class="msg-text" id="fast-msg-1">Hallo, ich würde den schwarzen Knirps T.200 gerne für 12 € über Direktkauf mit der Gratis-Versandaktion nehmen. Passt das für Sie? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-knirps-t200-schwarz/k0" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ich würde den schwarzen Knirps T.200 gerne für 12 € über Direktkauf mit der Gratis-Versandaktion nehmen. Passt das für Sie? Viele Grüße!')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'fast-msg-1')">📋 Vorlage kopieren</button>
             
           </div>
         </div>
@@ -2976,9 +3765,16 @@
             <span class="tag">Marktwert ~30 €</span>
           </div>
           <div class="verdict">Der Insider-Tipp: Unbenutzter Firmen-Sturmschirm für unter 10 € mit Gratis-Versand.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Kauf-/Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 8 €</span>
+            </div>
+            <div class="msg-text" id="fast-msg-2">Hallo, ist der schwarze Sturmschirm noch unbenutzt da? Würde ihn gerne direkt für 8 € kaufen. Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-regenschirm-schwarz-sturmfest/k0" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Hallo, ist der schwarze Sturmschirm noch unbenutzt da? Würde ihn gerne direkt für 8 € kaufen. Viele Grüße!')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'fast-msg-2')">📋 Vorlage kopieren</button>
             
           </div>
         </div>
@@ -3002,9 +3798,16 @@
             <span class="tag">Marktwert ~30 €</span>
           </div>
           <div class="verdict">Maximaler Budget-Cheat: Zwei schlichte schwarze Schirme für 10 € inklusive Versand.</div>
+          <div class="msg-box">
+            <div class="msg-header">
+              <span>💬 Kauf-/Verhandlungs-Vorlage</span>
+              <span class="msg-bid-badge">Zielgebot: 10 €</span>
+            </div>
+            <div class="msg-text" id="fast-msg-3">Guten Tag, ich nehme das Set aus schwarzen Schirmen gerne für 10 € komplett. Können wir das direkt abwickeln? Viele Grüße!</div>
+          </div>
           <div class="actions">
             <a class="btn-open" href="https://www.kleinanzeigen.de/s-regenschirm-konvolut-schwarz/k0" target="_blank" rel="noopener">Inserat öffnen ↗</a>
-            <button class="btn-copy" onclick="copyMsg(this, 'Guten Tag, ich nehme das Set aus schwarzen Schirmen gerne für 10 € komplett. Können wir das direkt abwickeln? Viele Grüße!')">Gebot-Text kopieren</button>
+            <button class="btn-copy" onclick="copyMsg(this, 'fast-msg-3')">📋 Vorlage kopieren</button>
             
           </div>
         </div>
@@ -3046,12 +3849,47 @@
       cards.forEach(c => container.appendChild(c));
     }
 
-    function copyMsg(btn, txt) {
-      navigator.clipboard.writeText(txt);
-      const old = btn.textContent;
-      btn.textContent = "✓ Kopiert";
-      btn.style.color = "#4ade80";
-      setTimeout(() => { btn.textContent = old; btn.style.color = ""; }, 1800);
+    function copyMsg(btn, elId) {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      const txt = el.innerText || el.textContent;
+
+      function onSuccess() {
+        const old = btn.textContent;
+        btn.textContent = "✓ Kopiert!";
+        btn.style.color = "#4ade80";
+        btn.style.borderColor = "#4ade80";
+        btn.style.background = "#14532d22";
+        setTimeout(() => {
+          btn.textContent = old;
+          btn.style.color = "";
+          btn.style.borderColor = "";
+          btn.style.background = "";
+        }, 2000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(onSuccess).catch(() => fallbackCopy(txt, onSuccess));
+      } else {
+        fallbackCopy(txt, onSuccess);
+      }
+    }
+
+    function fallbackCopy(text, cb) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try {
+        document.execCommand("copy");
+        if (cb) cb();
+      } catch (err) {
+        alert("Kopieren nicht unterstützt: " + text);
+      }
+      document.body.removeChild(ta);
     }
 
     // Auto-Select via URL Hash (z. B. #fast)
