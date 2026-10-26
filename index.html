@@ -51,9 +51,46 @@
     
     .card {
       background: #0a0a0a; border: 1px solid #1f1f1f; border-radius: 8px;
-      padding: 16px; margin-bottom: 12px; transition: border-color 0.15s;
+      padding: 16px; margin-bottom: 12px; transition: all 0.2s ease;
+      position: relative;
     }
     .card:hover { border-color: #333; }
+    .card.is-seen {
+      opacity: 0.55; filter: grayscale(15%);
+    }
+    .card.is-seen:hover {
+      opacity: 0.95; filter: none;
+    }
+    .card.is-fav {
+      border-color: #fbbf24 !important;
+      box-shadow: 0 0 14px rgba(251, 191, 36, 0.2);
+    }
+    .card.is-dismissed {
+      display: none !important;
+    }
+    .card-controls {
+      position: absolute; top: 12px; right: 12px;
+      display: flex; gap: 6px; z-index: 5;
+    }
+    .btn-icon {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid #333;
+      border-radius: 4px; color: #888; font-size: 0.75rem;
+      cursor: pointer; padding: 3px 6px; line-height: 1;
+      transition: all 0.15s ease;
+    }
+    .btn-icon:hover {
+      background: #222; color: #fff; border-color: #555;
+    }
+    .btn-star.active {
+      color: #fbbf24; background: rgba(251, 191, 36, 0.15); border-color: #fbbf24;
+    }
+    .btn-dismiss:hover {
+      color: #ef4444; border-color: #ef4444; background: rgba(239, 68, 68, 0.1);
+    }
+    
+    .tag-highend { background: #3b0764; color: #d8b4fe; border: 1px solid #7e22ce; }
+    .tag-steal { background: #064e3b; color: #6ee7b7; border: 1px solid #059669; }
+    .pill-divider { color: #444; margin: 0 4px; align-self: center; font-size: 0.8rem; user-select: none; }
     .row-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
     .score {
       display: inline-block; background: #112a1a; color: #4ade80; border: 1px solid #1e4d2b;
@@ -144,7 +181,7 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 26.10. 10:04</span>
+    <span class="sub">Stand: 26.10. 10:15</span>
   </header>
 
   <nav class="tabs">
@@ -159,23 +196,35 @@
   <!-- TAB 1: GRAVEL SNIPER -->
   <div id="tab-gravel" class="tab-content">
     <div class="filter-pills">
-      <button class="pill active" onclick="filterPlatform(event, 'all')">Alle (55)</button>
-      <button class="pill" onclick="filterPlatform(event, 'kleinanzeigen')">📍 Kleinanzeigen (44)</button>
-      <button class="pill pill-buycycle" onclick="filterPlatform(event, 'buycycle')">🛡️ Buycycle (4)</button>
-      <button class="pill pill-bikemarkt" onclick="filterPlatform(event, 'bikemarkt')">🚲 Bikemarkt (2)</button>
-      <button class="pill pill-outlet" onclick="filterPlatform(event, 'outlet')">🏪 Outlets / Neu (5)</button>
+      <button id="pill-all" class="pill view-pill active" onclick="setViewFilter(event, 'all')">Alle (55)</button>
+      <button id="pill-unseen" class="pill view-pill" onclick="setViewFilter(event, 'unseen')">🟢 Ungesehen</button>
+      <button id="pill-favs" class="pill view-pill" onclick="setViewFilter(event, 'favs')">⭐ Gemerkt</button>
+      <span class="pill-divider">|</span>
+      <button class="pill view-pill" onclick="setViewFilter(event, 'kleinanzeigen')">📍 Kleinanzeigen (44)</button>
+      <button class="pill view-pill pill-buycycle" onclick="setViewFilter(event, 'buycycle')">🛡️ Buycycle (4)</button>
+      <button class="pill view-pill pill-bikemarkt" onclick="setViewFilter(event, 'bikemarkt')">🚲 Bikemarkt (2)</button>
+      <button class="pill view-pill pill-outlet" onclick="setViewFilter(event, 'outlet')">🏪 Outlets (5)</button>
     </div>
-    <div class="filter-pills" style="margin-top: -8px;">
-      <button id="sort-newest" class="pill active" onclick="sortGravel('newest')">🕒 Neueste zuerst</button>
-      <button id="sort-score" class="pill" onclick="sortGravel('score')">🏆 Höchster Score</button>
+    <div class="filter-pills" style="margin-top: -8px; justify-content: space-between; align-items: center;">
+      <div>
+        <button id="sort-newest" class="pill active" onclick="sortGravel('newest')">🕒 Neueste zuerst</button>
+        <button id="sort-score" class="pill" onclick="sortGravel('score')">🏆 Höchster Score</button>
+        <button id="sort-bid" class="pill" onclick="sortGravel('bid')">💰 Günstigster Preis</button>
+      </div>
+      <div id="dismiss-info" style="font-size: 0.75rem; color: #888; display: none;"></div>
     </div>
     <div id="gravel-list">
       
-        <div class="card" data-platform="buycycle" data-ts="1793005200" data-score="8.40">
+        <div class="card" data-url="https://buycycle.com/de-de/product/superx-shimano-grx-52777" data-platform="buycycle" data-ts="1793005200" data-score="8.40" data-bid="1250" onclick="markSeen('https://buycycle.com/de-de/product/superx-shimano-grx-52777')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://buycycle.com/de-de/product/superx-shimano-grx-52777')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://buycycle.com/de-de/product/superx-shimano-grx-52777')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
-              <span class="model">Cannondale SuperX Disc Carbon</span><span class='tag tag-new'>🔥 NEU</span>
+              <span class="model">Cannondale SuperX Disc Carbon</span>
+              <span class='tag tag-new'>🔥 NEU</span> <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1383 €</span>
@@ -204,11 +253,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-0')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="buycycle" data-ts="1792776300" data-score="9.10">
+        <div class="card" data-url="https://buycycle.com/de-de/product/grizl-cf-sl-7-2023-49751" data-platform="buycycle" data-ts="1792776300" data-score="9.10" data-bid="1150" onclick="markSeen('https://buycycle.com/de-de/product/grizl-cf-sl-7-2023-49751')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://buycycle.com/de-de/product/grizl-cf-sl-7-2023-49751')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://buycycle.com/de-de/product/grizl-cf-sl-7-2023-49751')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">9.1</span>
-              <span class="model">Canyon Grizl CF SL 7</span><span class='tag sleeper'>Sleeper</span>
+              <span class="model">Canyon Grizl CF SL 7</span>
+              <span class='tag sleeper'>🕵️ SLEEPER</span> <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1230 €</span>
@@ -237,11 +291,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-1')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="bikemarkt" data-ts="1792769100" data-score="9.80">
+        <div class="card" data-url="https://bikemarkt.mtb-news.de/article/1802032-cube-nuroad" data-platform="bikemarkt" data-ts="1792769100" data-score="9.80" data-bid="1150" onclick="markSeen('https://bikemarkt.mtb-news.de/article/1802032-cube-nuroad')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://bikemarkt.mtb-news.de/article/1802032-cube-nuroad')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://bikemarkt.mtb-news.de/article/1802032-cube-nuroad')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">9.8</span>
-              <span class="model">Cube Nuroad C:62 SLT (2024)</span><span class='tag sleeper'>Sleeper</span>
+              <span class="model">Cube Nuroad C:62 SLT (2024)</span>
+              <span class='tag sleeper'>🕵️ SLEEPER</span> <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 € VB</span>
@@ -270,11 +329,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-2')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="1792762080" data-score="8.40">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-rennrad/3509723300-217-7582" data-platform="kleinanzeigen" data-ts="1792762080" data-score="8.40" data-bid="420" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-rennrad/3509723300-217-7582')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-rennrad/3509723300-217-7582')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-rennrad/3509723300-217-7582')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
-              <span class="model">Focus Mares AX Disc</span><span class='tag sleeper'>Sleeper</span>
+              <span class="model">Focus Mares AX Disc</span>
+              <span class='tag sleeper'>🕵️ SLEEPER</span> <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">480 € VB</span>
@@ -303,11 +367,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-3')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="outlet" data-ts="1792762020" data-score="9.30">
+        <div class="card" data-url="https://www.bike-discount.de/de/radon-regard-al-7.0" data-platform="outlet" data-ts="1792762020" data-score="9.30" data-bid="999" onclick="markSeen('https://www.bike-discount.de/de/radon-regard-al-7.0')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.bike-discount.de/de/radon-regard-al-7.0')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.bike-discount.de/de/radon-regard-al-7.0')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">9.3</span>
               <span class="model">Radon REGARD AL 7.0</span>
+              
             </div>
             <div class="prices">
               <span class="ask">999 €</span>
@@ -336,11 +405,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-4')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="outlet" data-ts="1792762020" data-score="9.00">
+        <div class="card" data-url="https://www.decathlon.de/p/rennrad-triban-rc-500-scheibenbremse/_/R-p-301728" data-platform="outlet" data-ts="1792762020" data-score="9.00" data-bid="649" onclick="markSeen('https://www.decathlon.de/p/rennrad-triban-rc-500-scheibenbremse/_/R-p-301728')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.decathlon.de/p/rennrad-triban-rc-500-scheibenbremse/_/R-p-301728')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.decathlon.de/p/rennrad-triban-rc-500-scheibenbremse/_/R-p-301728')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">9.0</span>
               <span class="model">Triban RC 500 Disc</span>
+              
             </div>
             <div class="prices">
               <span class="ask">649 €</span>
@@ -369,11 +443,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-5')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="outlet" data-ts="1792762020" data-score="8.80">
+        <div class="card" data-url="https://www.canyon.com/de-de/outlet-fahrraeder/gravel-bikes/" data-platform="outlet" data-ts="1792762020" data-score="8.80" data-bid="1299" onclick="markSeen('https://www.canyon.com/de-de/outlet-fahrraeder/gravel-bikes/')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.canyon.com/de-de/outlet-fahrraeder/gravel-bikes/')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.canyon.com/de-de/outlet-fahrraeder/gravel-bikes/')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
               <span class="model">Canyon Outlet Grizl / Grail</span>
+              
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -402,11 +481,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-6')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="1792742040" data-score="8.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/focus-mares-cyclocross-rad-groesse-s-ultegra-dt-swiss/3548341989-217-1889" data-platform="kleinanzeigen" data-ts="1792742040" data-score="8.80" data-bid="550" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/focus-mares-cyclocross-rad-groesse-s-ultegra-dt-swiss/3548341989-217-1889')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/focus-mares-cyclocross-rad-groesse-s-ultegra-dt-swiss/3548341989-217-1889')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/focus-mares-cyclocross-rad-groesse-s-ultegra-dt-swiss/3548341989-217-1889')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
-              <span class="model">Focus Mares CX Ultegra Disc</span><span class='tag sleeper'>Sleeper</span>
+              <span class="model">Focus Mares CX Ultegra Disc</span>
+              <span class='tag sleeper'>🕵️ SLEEPER</span> <span class='tag tag-highend'>💎 HIGH-END</span> <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">650 € VB</span>
@@ -435,11 +519,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-7')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="1792481400" data-score="8.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-3/3539006797-217-4921" data-platform="kleinanzeigen" data-ts="1792481400" data-score="8.80" data-bid="480" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-3/3539006797-217-4921')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-3/3539006797-217-4921')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-3/3539006797-217-4921')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
-              <span class="model">Cannondale Topstone 3</span><span class='tag sleeper'>Sleeper</span>
+              <span class="model">Cannondale Topstone 3</span>
+              <span class='tag sleeper'>🕵️ SLEEPER</span> <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">550 € VB</span>
@@ -468,11 +557,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-8')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="1792481400" data-score="8.30">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-2-solar-flare-small/3516061588-217-8264" data-platform="kleinanzeigen" data-ts="1792481400" data-score="8.30" data-bid="1500" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-2-solar-flare-small/3516061588-217-8264')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-2-solar-flare-small/3516061588-217-8264')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-2-solar-flare-small/3516061588-217-8264')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.3</span>
               <span class="model">Giant Revolt Advanced 2</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1650 €</span>
@@ -501,11 +595,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-9')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="outlet" data-ts="1792481400" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/rennrad-triban-decathlon/3545906856-217-5421" data-platform="outlet" data-ts="1792481400" data-score="8.00" data-bid="240" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/rennrad-triban-decathlon/3545906856-217-5421')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/rennrad-triban-decathlon/3545906856-217-5421')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/rennrad-triban-decathlon/3545906856-217-5421')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
-              <span class="model">Triban RC 120 Disc</span><span class='tag sleeper'>Sleeper</span>
+              <span class="model">Triban RC 120 Disc</span>
+              <span class='tag sleeper'>🕵️ SLEEPER</span> <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">300 € VB</span>
@@ -534,11 +633,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-10')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="buycycle" data-ts="0" data-score="8.80">
+        <div class="card" data-url="https://buycycle.com/de-de/product/nuroad-race-fe-2023-65492" data-platform="buycycle" data-ts="0" data-score="8.80" data-bid="1050" onclick="markSeen('https://buycycle.com/de-de/product/nuroad-race-fe-2023-65492')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://buycycle.com/de-de/product/nuroad-race-fe-2023-65492')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://buycycle.com/de-de/product/nuroad-race-fe-2023-65492')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.8</span>
               <span class="model">Cube Nuroad Race FE 2023</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1179 €</span>
@@ -567,11 +671,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-11')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-2023-gravelbike-carbon-xs-shimano-grx/3549489591-217-1950" data-platform="kleinanzeigen" data-ts="0" data-score="8.70" data-bid="1050" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-2023-gravelbike-carbon-xs-shimano-grx/3549489591-217-1950')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-2023-gravelbike-carbon-xs-shimano-grx/3549489591-217-1950')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-2023-gravelbike-carbon-xs-shimano-grx/3549489591-217-1950')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
               <span class="model">Cube Nuroad C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1250 € VB</span>
@@ -600,11 +709,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-12')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168/3549118635-217-1207" data-platform="kleinanzeigen" data-ts="0" data-score="8.70" data-bid="1180" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168/3549118635-217-1207')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168/3549118635-217-1207')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168/3549118635-217-1207')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
               <span class="model">Cube Nuroad WS C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -633,11 +747,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-13')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549127563-217-16773" data-platform="kleinanzeigen" data-ts="0" data-score="8.70" data-bid="1200" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549127563-217-16773')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549127563-217-16773')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549127563-217-16773')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
               <span class="model">Cube Nuroad WS C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -666,11 +785,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-14')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549121633-217-1778" data-platform="kleinanzeigen" data-ts="0" data-score="8.70" data-bid="1200" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549121633-217-1778')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549121633-217-1778')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549121633-217-1778')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
               <span class="model">Cube Nuroad WS C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -699,11 +823,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-15')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549123074-217-990" data-platform="kleinanzeigen" data-ts="0" data-score="8.70" data-bid="1200" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549123074-217-990')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549123074-217-990')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549123074-217-990')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
               <span class="model">Cube Nuroad WS C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -732,11 +861,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-16')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549120451-217-1050" data-platform="kleinanzeigen" data-ts="0" data-score="8.70" data-bid="1200" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549120451-217-1050')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549120451-217-1050')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549120451-217-1050')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
               <span class="model">Cube Nuroad WS C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -765,11 +899,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-17')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-gravel-bike-2022/3539939603-217-4847" data-platform="kleinanzeigen" data-ts="0" data-score="8.70" data-bid="1200" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-gravel-bike-2022/3539939603-217-4847')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-gravel-bike-2022/3539939603-217-4847')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro-gravel-bike-2022/3539939603-217-4847')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
               <span class="model">Cube Nuroad C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1450 € VB</span>
@@ -798,11 +937,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-18')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.70">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl8-gravel-bike-matcha-groesse-s/3528206322-217-4971" data-platform="kleinanzeigen" data-ts="0" data-score="8.70" data-bid="1400" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl8-gravel-bike-matcha-groesse-s/3528206322-217-4971')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl8-gravel-bike-matcha-groesse-s/3528206322-217-4971')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl8-gravel-bike-matcha-groesse-s/3528206322-217-4971')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.7</span>
               <span class="model">Canyon Grizl CF SL 8</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1600 € VB</span>
@@ -831,11 +975,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-19')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.50">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8/3521336300-217-4285" data-platform="kleinanzeigen" data-ts="0" data-score="8.50" data-bid="1400" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8/3521336300-217-4285')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8/3521336300-217-4285')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8/3521336300-217-4285')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.5</span>
               <span class="model">Canyon Grail CF SL 8</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1650 € VB</span>
@@ -864,11 +1013,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-20')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-gravelbike-groesse-s/3550091211-217-1733" data-platform="kleinanzeigen" data-ts="0" data-score="8.40" data-bid="420" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-gravelbike-groesse-s/3550091211-217-1733')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-gravelbike-groesse-s/3550091211-217-1733')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-gravelbike-groesse-s/3550091211-217-1733')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
               <span class="model">Cube Nuroad</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">500 € VB</span>
@@ -897,11 +1051,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-21')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/norco-threshold-al-gravel-rh-48-custom-edition/3539339932-217-5969" data-platform="kleinanzeigen" data-ts="0" data-score="8.40" data-bid="750" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/norco-threshold-al-gravel-rh-48-custom-edition/3539339932-217-5969')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/norco-threshold-al-gravel-rh-48-custom-edition/3539339932-217-5969')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/norco-threshold-al-gravel-rh-48-custom-edition/3539339932-217-5969')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
               <span class="model">Norco Threshold AL Custom</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">950 € VB</span>
@@ -930,11 +1089,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-22')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cyclocross-gravel-canyon-inflite-al-slx-s-fahrrad/3525645202-217-5324" data-platform="kleinanzeigen" data-ts="0" data-score="8.40" data-bid="800" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cyclocross-gravel-canyon-inflite-al-slx-s-fahrrad/3525645202-217-5324')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cyclocross-gravel-canyon-inflite-al-slx-s-fahrrad/3525645202-217-5324')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cyclocross-gravel-canyon-inflite-al-slx-s-fahrrad/3525645202-217-5324')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
               <span class="model">Canyon Inflite AL SLX</span>
+              
             </div>
             <div class="prices">
               <span class="ask">975 € VB</span>
@@ -963,11 +1127,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-23')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549124299-217-1987" data-platform="kleinanzeigen" data-ts="0" data-score="8.40" data-bid="1150" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549124299-217-1987')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549124299-217-1987')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549124299-217-1987')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
               <span class="model">Cube Nuroad WS C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -996,11 +1165,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-24')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.40">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-store-koeln-bio-bikes-/3550047414-217-984" data-platform="kleinanzeigen" data-ts="0" data-score="8.40" data-bid="1200" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-store-koeln-bio-bikes-/3550047414-217-984')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-store-koeln-bio-bikes-/3550047414-217-984')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-store-koeln-bio-bikes-/3550047414-217-984')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
               <span class="model">Cube Nuroad WS C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -1029,11 +1203,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-25')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="buycycle" data-ts="0" data-score="8.40">
+        <div class="card" data-url="https://buycycle.com/de-de/product/nuroad-c62-pro-2023-34187" data-platform="buycycle" data-ts="0" data-score="8.40" data-bid="1400" onclick="markSeen('https://buycycle.com/de-de/product/nuroad-c62-pro-2023-34187')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://buycycle.com/de-de/product/nuroad-c62-pro-2023-34187')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://buycycle.com/de-de/product/nuroad-c62-pro-2023-34187')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.4</span>
               <span class="model">Cube Nuroad C:62 Pro (2023)</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1573 €</span>
@@ -1062,11 +1241,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-26')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.30">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/triban-grvl-af-gravelbike-microshift-sword-1x10-pink/3537323208-217-7698" data-platform="kleinanzeigen" data-ts="0" data-score="8.30" data-bid="580" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/triban-grvl-af-gravelbike-microshift-sword-1x10-pink/3537323208-217-7698')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/triban-grvl-af-gravelbike-microshift-sword-1x10-pink/3537323208-217-7698')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/triban-grvl-af-gravelbike-microshift-sword-1x10-pink/3537323208-217-7698')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.3</span>
               <span class="model">Triban GRVL AF</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">750 € VB</span>
@@ -1095,11 +1279,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-27')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.30">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-attain-race-xs-rennrad-farbe-lilac-modell-2026/3551204737-217-4447" data-platform="kleinanzeigen" data-ts="0" data-score="8.30" data-bid="680" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-attain-race-xs-rennrad-farbe-lilac-modell-2026/3551204737-217-4447')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-attain-race-xs-rennrad-farbe-lilac-modell-2026/3551204737-217-4447')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-attain-race-xs-rennrad-farbe-lilac-modell-2026/3551204737-217-4447')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.3</span>
               <span class="model">Cube Attain Race Disc</span>
+              
             </div>
             <div class="prices">
               <span class="ask">900 € VB</span>
@@ -1128,11 +1317,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-28')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.30">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl-8-carbon-gravelbike/3549193631-217-4675" data-platform="kleinanzeigen" data-ts="0" data-score="8.30" data-bid="1150" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl-8-carbon-gravelbike/3549193631-217-4675')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl-8-carbon-gravelbike/3549193631-217-4675')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/canyon-grizl-cf-sl-8-carbon-gravelbike/3549193631-217-4675')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.3</span>
               <span class="model">Canyon Grizl CF SL 8</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1350 € VB</span>
@@ -1161,11 +1355,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-29')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-regenschirm-schwarz-sturmfest/k0" data-platform="kleinanzeigen" data-ts="0" data-score="8.00" data-bid="8" onclick="markSeen('https://www.kleinanzeigen.de/s-regenschirm-schwarz-sturmfest/k0')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-regenschirm-schwarz-sturmfest/k0')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-regenschirm-schwarz-sturmfest/k0')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">Fare Windfighter Carbon/Fiberglas</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span> <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">10 € VB</span>
@@ -1194,11 +1393,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-30')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-regenschirm-konvolut-schwarz/k0" data-platform="kleinanzeigen" data-ts="0" data-score="8.00" data-bid="10" onclick="markSeen('https://www.kleinanzeigen.de/s-regenschirm-konvolut-schwarz/k0')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-regenschirm-konvolut-schwarz/k0')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-regenschirm-konvolut-schwarz/k0')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">2x Schwarze Automatik-Schirme (Set)</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">12 € VB</span>
@@ -1227,11 +1431,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-31')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-knirps-t200-schwarz/k0" data-platform="kleinanzeigen" data-ts="0" data-score="8.00" data-bid="12" onclick="markSeen('https://www.kleinanzeigen.de/s-knirps-t200-schwarz/k0')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-knirps-t200-schwarz/k0')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-knirps-t200-schwarz/k0')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">Knirps T.200 Duomatic Schwarz</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">15 € VB</span>
@@ -1260,11 +1469,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-32')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="outlet" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.decathlon.de/p/golfschirm-profilter-small-125-cm/_/R-p-144211" data-platform="outlet" data-ts="0" data-score="8.00" data-bid="15" onclick="markSeen('https://www.decathlon.de/p/golfschirm-profilter-small-125-cm/_/R-p-144211')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.decathlon.de/p/golfschirm-profilter-small-125-cm/_/R-p-144211')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.decathlon.de/p/golfschirm-profilter-small-125-cm/_/R-p-144211')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">Decathlon Inesis Profilter (Sturmfest)</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">15 €</span>
@@ -1293,11 +1507,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-33')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-gravel-bike-inkl-strassenreifen/3542806674-217-18470" data-platform="kleinanzeigen" data-ts="0" data-score="8.00" data-bid="450" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-gravel-bike-inkl-strassenreifen/3542806674-217-18470')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-gravel-bike-inkl-strassenreifen/3542806674-217-18470')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/focus-mares-ax-cyclocross-gravel-bike-inkl-strassenreifen/3542806674-217-18470')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">Focus Mares AX</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">560 € VB</span>
@@ -1326,11 +1545,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-34')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/rennrad-cube-nuroad-rh47-cyclocross-gravelbike/3540956038-217-9590" data-platform="kleinanzeigen" data-ts="0" data-score="8.00" data-bid="550" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/rennrad-cube-nuroad-rh47-cyclocross-gravelbike/3540956038-217-9590')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/rennrad-cube-nuroad-rh47-cyclocross-gravelbike/3540956038-217-9590')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/rennrad-cube-nuroad-rh47-cyclocross-gravelbike/3540956038-217-9590')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">Cube Nuroad (FE)</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">695 € VB</span>
@@ -1359,11 +1583,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-35')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-fast-neu-nur-50-km/3551136447-217-7251" data-platform="kleinanzeigen" data-ts="0" data-score="8.00" data-bid="680" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-fast-neu-nur-50-km/3551136447-217-7251')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-fast-neu-nur-50-km/3551136447-217-7251')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-fast-neu-nur-50-km/3551136447-217-7251')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">Cube Nuroad Pro FE</span>
+              
             </div>
             <div class="prices">
               <span class="ask">900 € VB</span>
@@ -1392,11 +1621,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-36')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549111504-217-1767" data-platform="kleinanzeigen" data-ts="0" data-score="8.00" data-bid="1150" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549111504-217-1767')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549111504-217-1767')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-ws-c-62-pro-s-gravelbike-rennrad-carbon-b-21168-refurbishmentcenter/3549111504-217-1767')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">Cube Nuroad WS C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1299 €</span>
@@ -1425,11 +1659,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-37')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="8.00">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/stevens-gavere-com-shimano-grx-820-violett/3442362116-217-4509" data-platform="kleinanzeigen" data-ts="0" data-score="8.00" data-bid="1500" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/stevens-gavere-com-shimano-grx-820-violett/3442362116-217-4509')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/stevens-gavere-com-shimano-grx-820-violett/3442362116-217-4509')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/stevens-gavere-com-shimano-grx-820-violett/3442362116-217-4509')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">8.0</span>
               <span class="model">Stevens Gavere Com (2024)</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1619 €</span>
@@ -1458,11 +1697,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-38')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/norco-threshold-gravel-mit-topausstattung-rh-48cm/3539339932-217-5969" data-platform="kleinanzeigen" data-ts="0" data-score="7.90" data-bid="750" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/norco-threshold-gravel-mit-topausstattung-rh-48cm/3539339932-217-5969')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/norco-threshold-gravel-mit-topausstattung-rh-48cm/3539339932-217-5969')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/norco-threshold-gravel-mit-topausstattung-rh-48cm/3539339932-217-5969')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.9</span>
               <span class="model">Norco Threshold AL</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">950 € VB</span>
@@ -1491,11 +1735,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-39')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/ridley-x-trail-carbon-gravel-bike-shimano-105-disc-top-zustan/3547689999-217-4504" data-platform="kleinanzeigen" data-ts="0" data-score="7.90" data-bid="820" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/ridley-x-trail-carbon-gravel-bike-shimano-105-disc-top-zustan/3547689999-217-4504')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/ridley-x-trail-carbon-gravel-bike-shimano-105-disc-top-zustan/3547689999-217-4504')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/ridley-x-trail-carbon-gravel-bike-shimano-105-disc-top-zustan/3547689999-217-4504')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.9</span>
               <span class="model">Ridley X-Trail Carbon</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1000 € VB</span>
@@ -1524,11 +1773,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-40')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-gravel-bike-carbon/3514076800-217-196" data-platform="kleinanzeigen" data-ts="0" data-score="7.90" data-bid="1050" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-gravel-bike-carbon/3514076800-217-196')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-gravel-bike-carbon/3514076800-217-196')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-gravel-bike-carbon/3514076800-217-196')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.9</span>
               <span class="model">Cannondale Topstone Carbon Apex 1</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1300 € VB</span>
@@ -1557,11 +1811,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-41')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/gravel-bike/3534073698-217-17566" data-platform="kleinanzeigen" data-ts="0" data-score="7.90" data-bid="1200" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/gravel-bike/3534073698-217-17566')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/gravel-bike/3534073698-217-17566')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/gravel-bike/3534073698-217-17566')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.9</span>
               <span class="model">Conway GRV 10.0 Carbon</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1500 € VB</span>
@@ -1590,11 +1849,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-42')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.90">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-3-28-zoll-diamant-rh-s/3516078741-217-8264" data-platform="kleinanzeigen" data-ts="0" data-score="7.90" data-bid="1350" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-3-28-zoll-diamant-rh-s/3516078741-217-8264')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-3-28-zoll-diamant-rh-s/3516078741-217-8264')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/giant-revolt-advanced-3-28-zoll-diamant-rh-s/3516078741-217-8264')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.9</span>
               <span class="model">Giant Revolt Advanced 3</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1550 €</span>
@@ -1623,11 +1887,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-43')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-2021-gravel-bike-schwarz/3551708115-217-2164" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="390" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-2021-gravel-bike-schwarz/3551708115-217-2164')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-2021-gravel-bike-schwarz/3551708115-217-2164')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-fe-2021-gravel-bike-schwarz/3551708115-217-2164')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Cube Nuroad Pro FE (2021)</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">499 € VB</span>
@@ -1656,11 +1925,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-44')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/contessa-speedster-gravelbike-rennrad-49cm-28-zoll/3547524730-217-7979" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="540" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/contessa-speedster-gravelbike-rennrad-49cm-28-zoll/3547524730-217-7979')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/contessa-speedster-gravelbike-rennrad-49cm-28-zoll/3547524730-217-7979')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/contessa-speedster-gravelbike-rennrad-49cm-28-zoll/3547524730-217-7979')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Scott Contessa Speedster Gravel</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">750 € VB</span>
@@ -1689,11 +1963,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-45')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/bulls-daily-grinder-1-51cm-gravel-bike-ca-300km-gefahren/3549058828-217-964" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="550" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/bulls-daily-grinder-1-51cm-gravel-bike-ca-300km-gefahren/3549058828-217-964')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/bulls-daily-grinder-1-51cm-gravel-bike-ca-300km-gefahren/3549058828-217-964')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/bulls-daily-grinder-1-51cm-gravel-bike-ca-300km-gefahren/3549058828-217-964')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Bulls Daily Grinder 1</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">750 € VB</span>
@@ -1722,11 +2001,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-46')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/scott-contessa-speedster-gravelbike-rennrad-49-cm-28-zoll/3547521016-217-5195" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="550" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/scott-contessa-speedster-gravelbike-rennrad-49-cm-28-zoll/3547521016-217-5195')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/scott-contessa-speedster-gravelbike-rennrad-49-cm-28-zoll/3547521016-217-5195')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/scott-contessa-speedster-gravelbike-rennrad-49-cm-28-zoll/3547521016-217-5195')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Scott Contessa Speedster Gravel</span>
+              <span class='tag tag-steal'>💰 SCHNÄPPCHEN</span>
             </div>
             <div class="prices">
               <span class="ask">750 € VB</span>
@@ -1755,11 +2039,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-47')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/bergamont-grandurance-rd-3-2024-sehr-gepflegt-unter-1-000-km/3547772708-217-1738" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="650" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/bergamont-grandurance-rd-3-2024-sehr-gepflegt-unter-1-000-km/3547772708-217-1738')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/bergamont-grandurance-rd-3-2024-sehr-gepflegt-unter-1-000-km/3547772708-217-1738')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/bergamont-grandurance-rd-3-2024-sehr-gepflegt-unter-1-000-km/3547772708-217-1738')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Bergamont Grandurance RD 3</span>
+              
             </div>
             <div class="prices">
               <span class="ask">899 € VB</span>
@@ -1788,11 +2077,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-48')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-gravelbike-50cm-grey-modell-680100/3549586956-217-5219" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="680" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-gravelbike-50cm-grey-modell-680100/3549586956-217-5219')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-gravelbike-50cm-grey-modell-680100/3549586956-217-5219')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-pro-gravelbike-50cm-grey-modell-680100/3549586956-217-5219')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Cube Nuroad Pro (2023/24)</span>
+              
             </div>
             <div class="prices">
               <span class="ask">900 € VB</span>
@@ -1821,11 +2115,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-49')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-alloy-gr-s/3504095671-217-4843" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="700" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-alloy-gr-s/3504095671-217-4843')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-alloy-gr-s/3504095671-217-4843')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cannondale-topstone-alloy-gr-s/3504095671-217-4843')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Cannondale Topstone Tiagra Alloy (2020)</span>
+              
             </div>
             <div class="prices">
               <span class="ask">890 € VB</span>
@@ -1854,11 +2153,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-50')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="bikemarkt" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://bikemarkt.mtb-news.de/article/1802033-canyon-grail-cf-sl-7-carbon" data-platform="bikemarkt" data-ts="0" data-score="7.80" data-bid="1200" onclick="markSeen('https://bikemarkt.mtb-news.de/article/1802033-canyon-grail-cf-sl-7-carbon')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://bikemarkt.mtb-news.de/article/1802033-canyon-grail-cf-sl-7-carbon')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://bikemarkt.mtb-news.de/article/1802033-canyon-grail-cf-sl-7-carbon')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Canyon Grail CF SL 7</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1490 € VB</span>
@@ -1887,11 +2191,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-51')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/sunn-venture-s1-gravel-bike-groesse-50cm-neu/3173522150-217-4712" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="1250" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/sunn-venture-s1-gravel-bike-groesse-50cm-neu/3173522150-217-4712')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/sunn-venture-s1-gravel-bike-groesse-50cm-neu/3173522150-217-4712')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/sunn-venture-s1-gravel-bike-groesse-50cm-neu/3173522150-217-4712')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">SUNN Venture S1</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1399 €</span>
@@ -1920,11 +2229,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-52')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro/3538538895-217-19614" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="1350" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro/3538538895-217-19614')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro/3538538895-217-19614')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/cube-nuroad-c-62-pro/3538538895-217-19614')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Cube Nuroad C:62 Pro</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1700 € VB</span>
@@ -1953,11 +2267,16 @@
             <button class="btn-copy" onclick="copyMsg(this, 'gravel-msg-53')">📋 Vorlage kopieren</button>
           </div>
         </div>
-        <div class="card" data-platform="kleinanzeigen" data-ts="0" data-score="7.80">
+        <div class="card" data-url="https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8-2022-gravel-bike-sand-gr-s/3538124427-217-4890" data-platform="kleinanzeigen" data-ts="0" data-score="7.80" data-bid="1450" onclick="markSeen('https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8-2022-gravel-bike-sand-gr-s/3538124427-217-4890')">
+          <div class="card-controls">
+            <button class="btn-icon btn-star" title="Merken / Favorit" onclick="toggleFav(event, 'https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8-2022-gravel-bike-sand-gr-s/3538124427-217-4890')">⭐</button>
+            <button class="btn-icon btn-dismiss" title="Ausblenden" onclick="dismissDeal(event, 'https://www.kleinanzeigen.de/s-anzeige/canyon-grail-cf-sl-8-2022-gravel-bike-sand-gr-s/3538124427-217-4890')">✕</button>
+          </div>
           <div class="row-top">
             <div>
               <span class="score">7.8</span>
               <span class="model">Canyon Grail CF SL 8</span>
+              <span class='tag tag-highend'>💎 HIGH-END</span>
             </div>
             <div class="prices">
               <span class="ask">1800 € VB</span>
@@ -2131,39 +2450,155 @@
   </div>
 
   <script>
+    // LocalStorage State Management
+    const STORAGE_SEEN = "gravel_seen_urls";
+    const STORAGE_DISMISSED = "gravel_dismissed_urls";
+    const STORAGE_FAVS = "gravel_fav_urls";
+
+    function getStored(k) {
+      try { return JSON.parse(localStorage.getItem(k) || "[]"); } catch(e) { return []; }
+    }
+    function setStored(k, arr) {
+      try { localStorage.setItem(k, JSON.stringify(arr)); } catch(e) {}
+    }
+
+    let seenUrls = new Set(getStored(STORAGE_SEEN));
+    let dismissedUrls = new Set(getStored(STORAGE_DISMISSED));
+    let favUrls = new Set(getStored(STORAGE_FAVS));
+    let activeViewFilter = 'all';
+    let currentSortMode = 'newest';
+
+    function markSeen(url) {
+      if (!url || seenUrls.has(url)) return;
+      seenUrls.add(url);
+      setStored(STORAGE_SEEN, Array.from(seenUrls));
+      updateCardStates();
+      updatePillCounts();
+    }
+
+    function dismissDeal(e, url) {
+      e.stopPropagation();
+      dismissedUrls.add(url);
+      setStored(STORAGE_DISMISSED, Array.from(dismissedUrls));
+      updateCardStates();
+      updatePillCounts();
+    }
+
+    function toggleFav(e, url) {
+      e.stopPropagation();
+      if (favUrls.has(url)) {
+        favUrls.delete(url);
+      } else {
+        favUrls.add(url);
+        markSeen(url);
+      }
+      setStored(STORAGE_FAVS, Array.from(favUrls));
+      updateCardStates();
+      updatePillCounts();
+      sortGravel(currentSortMode);
+    }
+
+    function resetDismissed() {
+      dismissedUrls.clear();
+      setStored(STORAGE_DISMISSED, []);
+      updateCardStates();
+      updatePillCounts();
+    }
+
+    function updateCardStates() {
+      document.querySelectorAll('#gravel-list .card').forEach(card => {
+        const u = card.getAttribute('data-url');
+        card.classList.toggle('is-seen', seenUrls.has(u));
+        card.classList.toggle('is-fav', favUrls.has(u));
+        card.classList.toggle('is-dismissed', dismissedUrls.has(u));
+        const starBtn = card.querySelector('.btn-star');
+        if (starBtn) starBtn.classList.toggle('active', favUrls.has(u));
+      });
+    }
+
+    function setViewFilter(e, view) {
+      activeViewFilter = view;
+      document.querySelectorAll('.view-pill').forEach(p => p.classList.remove('active'));
+      e.target.classList.add('active');
+      applyAllFilters();
+    }
+
+    function applyAllFilters() {
+      document.querySelectorAll('#gravel-list .card').forEach(card => {
+        const u = card.getAttribute('data-url');
+        if (dismissedUrls.has(u)) {
+          card.style.display = 'none';
+          return;
+        }
+        const isSeen = seenUrls.has(u);
+        const isFav = favUrls.has(u);
+        const plat = card.getAttribute('data-platform');
+
+        let show = true;
+        if (activeViewFilter === 'unseen' && isSeen) show = false;
+        if (activeViewFilter === 'favs' && !isFav) show = false;
+        if (['kleinanzeigen', 'buycycle', 'bikemarkt', 'outlet'].includes(activeViewFilter) && plat !== activeViewFilter) show = false;
+
+        card.style.display = show ? 'block' : 'none';
+      });
+    }
+
+    function updatePillCounts() {
+      const allCards = Array.from(document.querySelectorAll('#gravel-list .card')).filter(c => !dismissedUrls.has(c.getAttribute('data-url')));
+      const unseenCount = allCards.filter(c => !seenUrls.has(c.getAttribute('data-url'))).length;
+      const favCount = allCards.filter(c => favUrls.has(c.getAttribute('data-url'))).length;
+
+      const btnAll = document.getElementById('pill-all');
+      const btnUnseen = document.getElementById('pill-unseen');
+      const btnFavs = document.getElementById('pill-favs');
+      const dismissInfo = document.getElementById('dismiss-info');
+
+      if (btnAll) btnAll.textContent = `Alle (${allCards.length})`;
+      if (btnUnseen) btnUnseen.textContent = `🟢 Ungesehen (${unseenCount})`;
+      if (btnFavs) btnFavs.textContent = `⭐ Gemerkt (${favCount})`;
+      if (dismissInfo) {
+        if (dismissedUrls.size > 0) {
+          dismissInfo.style.display = 'inline-block';
+          dismissInfo.innerHTML = `${dismissedUrls.size} ausgeblendet (<a href="javascript:resetDismissed()" style="color:#fbbf24; text-decoration:underline;">Wiederherstellen</a>)`;
+        } else {
+          dismissInfo.style.display = 'none';
+        }
+      }
+      applyAllFilters();
+    }
+
+    function sortGravel(mode) {
+      currentSortMode = mode;
+      document.getElementById('sort-newest').classList.toggle('active', mode === 'newest');
+      document.getElementById('sort-score').classList.toggle('active', mode === 'score');
+      document.getElementById('sort-bid').classList.toggle('active', mode === 'bid');
+      const container = document.getElementById('gravel-list');
+      const cards = Array.from(container.querySelectorAll('.card'));
+      cards.sort((a, b) => {
+        const uA = a.getAttribute('data-url');
+        const uB = b.getAttribute('data-url');
+        const favA = favUrls.has(uA) ? 1 : 0;
+        const favB = favUrls.has(uB) ? 1 : 0;
+        if (favA !== favB) return favB - favA; // Gemerkte Deals bleiben IMMER ganz oben!
+
+        if (mode === 'newest') {
+          const diff = Number(b.getAttribute('data-ts')) - Number(a.getAttribute('data-ts'));
+          if (diff !== 0) return diff;
+        } else if (mode === 'bid') {
+          const diff = Number(a.getAttribute('data-bid')) - Number(b.getAttribute('data-bid'));
+          if (diff !== 0) return diff;
+        }
+        return Number(b.getAttribute('data-score')) - Number(a.getAttribute('data-score'));
+      });
+      cards.forEach(c => container.appendChild(c));
+    }
+
     function switchTab(name) {
       document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
       document.getElementById('tab-' + name).style.display = 'block';
       document.getElementById('btn-' + name).classList.add('active');
       window.location.hash = name;
-    }
-
-    function filterPlatform(e, plat) {
-      e.target.parentElement.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-      e.target.classList.add('active');
-      document.querySelectorAll('#gravel-list .card').forEach(card => {
-        if (plat === 'all' || card.getAttribute('data-platform') === plat) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    function sortGravel(mode) {
-      document.getElementById('sort-newest').classList.toggle('active', mode === 'newest');
-      document.getElementById('sort-score').classList.toggle('active', mode === 'score');
-      const container = document.getElementById('gravel-list');
-      const cards = Array.from(container.querySelectorAll('.card'));
-      cards.sort((a, b) => {
-        if (mode === 'newest') {
-          const diff = Number(b.getAttribute('data-ts')) - Number(a.getAttribute('data-ts'));
-          if (diff !== 0) return diff;
-        }
-        return Number(b.getAttribute('data-score')) - Number(a.getAttribute('data-score'));
-      });
-      cards.forEach(c => container.appendChild(c));
     }
 
     function copyMsg(btn, elId) {
@@ -2209,7 +2644,18 @@
       document.body.removeChild(ta);
     }
 
-    // Auto-Select via URL Hash (z. B. #fast)
+    // Initialisierung beim Laden
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCardStates();
+      updatePillCounts();
+      sortGravel('newest');
+      if (window.location.hash === '#fast') {
+        switchTab('fast');
+      }
+    });
+    // Fallback falls DOMContentLoaded bereits gefeuert hat
+    updateCardStates();
+    updatePillCounts();
     if (window.location.hash === '#fast') {
       switchTab('fast');
     }
