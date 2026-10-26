@@ -181,7 +181,7 @@
 <body>
   <header>
     <h1>Deal Sniper</h1>
-    <span class="sub">Stand: 26.10. 10:59</span>
+    <span class="sub">Stand: 26.10. 11:56</span>
   </header>
 
   <nav class="tabs">
@@ -2176,10 +2176,13 @@
       if (btnAll) btnAll.textContent = `Alle (${allCards.length})`;
       if (btnUnseen) btnUnseen.textContent = `Ungesehen (${unseenCount})`;
       if (btnFavs) btnFavs.textContent = `Gemerkt (${favCount})`;
+      const activeDismissedCount = Array.from(document.querySelectorAll('#gravel-list .card'))
+        .filter(c => dismissedUrls.has(c.getAttribute('data-url'))).length;
+
       if (dismissInfo) {
-        if (dismissedUrls.size > 0) {
+        if (activeDismissedCount > 0) {
           dismissInfo.style.display = 'inline-block';
-          dismissInfo.innerHTML = `${dismissedUrls.size} ausgeblendet (<a href="javascript:resetDismissed()" style="color:#fbbf24; text-decoration:underline;">Wiederherstellen</a>)`;
+          dismissInfo.innerHTML = `${activeDismissedCount} ausgeblendet (<a href="javascript:resetDismissed()" style="color:#fbbf24; text-decoration:underline;">Wiederherstellen</a>)`;
         } else {
           dismissInfo.style.display = 'none';
         }
@@ -2228,7 +2231,7 @@
 
       function onSuccess() {
         const old = btn.textContent;
-        btn.textContent = "✓ Kopiert!";
+        btn.textContent = "Kopiert!";
         btn.style.color = "#4ade80";
         btn.style.borderColor = "#4ade80";
         btn.style.background = "#14532d22";
@@ -2264,21 +2267,23 @@
       document.body.removeChild(ta);
     }
 
-    // Initialisierung beim Laden
-    document.addEventListener("DOMContentLoaded", () => {
+    function initDashboard() {
       updateCardStates();
       updatePillCounts();
       sortGravel('newest');
       if (window.location.hash === '#fast') {
         switchTab('fast');
       }
-    });
-    // Fallback falls DOMContentLoaded bereits gefeuert hat
-    updateCardStates();
-    updatePillCounts();
-    if (window.location.hash === '#fast') {
-      switchTab('fast');
     }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDashboard);
+    } else {
+      initDashboard();
+    }
+    window.addEventListener('hashchange', () => {
+      const tab = window.location.hash.replace('#', '') || 'gravel';
+      switchTab(tab);
+    });
   </script>
 </body>
 </html>
